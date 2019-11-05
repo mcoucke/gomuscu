@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GoMuscu</string>
+    <string name="lundi">Lun</string>
+    <string name="mardi">Mar</string>
+    <string name="mercredi">Mer</string>
+    <string name="jeudi">Jeu</string>
+    <string name="vendredi">Ven</string>
+    <string name="samedi">Sam</string>
+    <string name="dimanche">Dim</string>
 </resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:rowCount="3"
+    android:useDefaultMargins="true"
+    android:columnCount="7">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/lundi" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/mardi" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/mercredi" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/jeudi" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/vendredi" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="5"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/samedi" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="6"
+        android:layout_row="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:padding="2dp"
+        android:background="#222222">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="3dp"
+            android:textSize="@dimen/days_font_size"
+            android:textStyle="bold"
+            android:text="@string/dimanche" />
+
+    </LinearLayout>
+
+
+</GridLayout>
