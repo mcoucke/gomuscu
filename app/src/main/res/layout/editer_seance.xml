@@ -6,4 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".EditerSeance">
 
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="552dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Séance numéro 1 " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Séance numéro 2 " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Séance numéro 3 " />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="348dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Créer une nouevlle séance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="290dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Intitulé de la séance recherchée"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/search" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
