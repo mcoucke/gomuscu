@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GoMuscu</string>
+    <string name="app_title">GoMuscu</string>
+    <string name="lundi">Mon</string>
+    <string name="mardi">Tue</string>
+    <string name="mercredi">Wed</string>
+    <string name="jeudi">Thu</string>
+    <string name="vendredi">Fri</string>
+    <string name="samedi">Sat</string>
+    <string name="dimanche">Sun</string>
+    <string name="btn_edit_planning">Edit\nplanning</string>
+    <string name="btn_edit_seances">Edit\nsessions</string>
+    <string name="btn_view_historique">History</string>
+    <string name="stat_total_temps">Workout time</string>
+    <string name="stat_total_seances">Sessions done</string>
+    <string name="stat_total_exos">Exercises done</string>
+    <string name="stat_moyenne_temps">Average session</string>
+</resources>

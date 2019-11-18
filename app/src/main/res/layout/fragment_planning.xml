@@ -2,171 +2,158 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:rowCount="3"
-    android:useDefaultMargins="true"
-    android:columnCount="7">
+    android:rowCount="2"
+    android:columnCount="4"
+    android:useDefaultMargins="true">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/days_layout_width"
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_row="0"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
         android:padding="2dp"
-        android:background="#222222">
+        android:background="#222222"
+        android:id="@+id/layout_lundi">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/days_text_width"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:padding="3dp"
             android:textSize="@dimen/days_font_size"
             android:textStyle="bold"
-            android:text="@string/lundi" />
+            android:textAlignment="center"
+            android:text="@string/lundi"
+            android:id="@+id/text_lundi" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/days_layout_width"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_row="0"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
         android:padding="2dp"
-        android:background="#222222">
+        android:background="#222222"
+        android:id="@+id/layout_mardi">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/days_text_width"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:padding="3dp"
             android:textSize="@dimen/days_font_size"
             android:textStyle="bold"
-            android:text="@string/mardi" />
+            android:textAlignment="center"
+            android:text="@string/mardi"
+            android:id="@+id/text_mardi"/>
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/days_layout_width"
         android:layout_height="wrap_content"
         android:layout_column="2"
         android:layout_row="0"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
         android:padding="2dp"
-        android:background="#222222">
+        android:background="#222222"
+        android:id="@+id/layout_mercredi">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/days_text_width"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:padding="3dp"
             android:textSize="@dimen/days_font_size"
             android:textStyle="bold"
-            android:text="@string/mercredi" />
+            android:textAlignment="center"
+            android:text="@string/mercredi"
+            android:id="@+id/text_mercredi"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/days_layout_width"
         android:layout_height="wrap_content"
         android:layout_column="3"
         android:layout_row="0"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
         android:padding="2dp"
-        android:background="#222222">
+        android:background="#222222"
+        android:id="@+id/layout_jeudi">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/days_text_width"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:padding="3dp"
             android:textSize="@dimen/days_font_size"
             android:textStyle="bold"
-            android:text="@string/jeudi" />
+            android:textAlignment="center"
+            android:text="@string/jeudi"
+            android:id="@+id/text_jeudi"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/img_day1"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_width="@dimen/work_img_width"
         android:layout_height="wrap_content"
-        android:layout_column="4"
-        android:layout_row="0"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:padding="2dp"
-        android:background="#222222">
+        android:onClick="onImageClick"
+        android:src="@drawable/work_day" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:padding="3dp"
-            android:textSize="@dimen/days_font_size"
-            android:textStyle="bold"
-            android:text="@string/vendredi" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/img_day2"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:layout_width="@dimen/work_img_width"
         android:layout_height="wrap_content"
-        android:layout_column="5"
-        android:layout_row="0"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:padding="2dp"
-        android:background="#222222">
+        android:onClick="onImageClick"
+        android:src="@drawable/work_day" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:padding="3dp"
-            android:textSize="@dimen/days_font_size"
-            android:textStyle="bold"
-            android:text="@string/samedi" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/img_day3"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:layout_width="@dimen/work_img_width"
         android:layout_height="wrap_content"
-        android:layout_column="6"
-        android:layout_row="0"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:padding="2dp"
-        android:background="#222222">
+        android:onClick="onImageClick"
+        android:src="@drawable/work_day" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:padding="3dp"
-            android:textSize="@dimen/days_font_size"
-            android:textStyle="bold"
-            android:text="@string/dimanche" />
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/img_day4"
+        android:layout_column="3"
+        android:layout_row="1"
+        android:layout_width="@dimen/work_img_width"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:onClick="onImageClick"
+        android:src="@drawable/rest_day" />
 
 
 </GridLayout>

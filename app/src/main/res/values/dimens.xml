@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="days_font_size">15sp</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <!--    MAIN    -->
+    <dimen name="app_title_size">22dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+
+    <!--    PLANNING    -->
+    <dimen name="days_font_size">18dp</dimen>
+    <dimen name="days_layout_width">60dp</dimen>
+    <dimen name="days_text_width">58dp</dimen>
+    <dimen name="work_img_width">50dp</dimen>
+
+    <!--    STATS    -->
+    <dimen name="stats_number">30dp</dimen>
 </resources>

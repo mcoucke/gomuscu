@@ -11,11 +11,74 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_title"
+        android:textStyle="bold"
+        android:textSize="@dimen/app_title_size"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="0.75"
+        android:name="com.app.gomuscu.PlanningFragment"
+        android:id="@+id/planningFrag" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_marginBottom="10dp"
+        android:rowCount="1"
+        android:columnCount="3">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:id="@+id/btn_edit_planning"
+            android:onClick="onClickEditPlanning"
+            android:text="@string/btn_edit_planning"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:id="@+id/btn_edit_seances"
+            android:onClick="onClickEditSeances"
+            android:text="@string/btn_edit_seances"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:id="@+id/btn_view_historique"
+            android:onClick="onClickViewHistorique"
+            android:text="@string/btn_view_historique"/>
+
+    </GridLayout>
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1"
-        android:name="com.app.gomuscu.PlanningFragment"
-        android:id="@+id/planningFrag" />
+        android:name="com.app.gomuscu.StatsFragment"
+        android:id="@+id/statsFrag" />
+
+
+
+
 
 </LinearLayout>

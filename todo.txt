@@ -1,28 +1,41 @@
 V1 :
-	accueil : - planning de la semaine (edt avec séances de sport planifiées)
-		  - sidebar à gauche (burger qui se déroule en editer edt, editer séances)
-		  - stats? (temps, poids, nbséances, etc...)
+	accueil :
+            - planning de la semaine (edt avec séances de sport planifiées)
+            - sidebar à gauche (burger qui se déroule en editer edt, editer séances)
+            - stats? (temps, poids, nbséances, etc...)
 
-	clic sur séance : - affichage de la séance
-			   - bouton démarrer la séance
+	clic sur séance :
+                - affichage de la séance
+                - bouton démarrer la séance
 
 	editer edt : - ajouter / supprimer / déplacer séances
 
-	editer séances : - ajouter une séance (noms et exos)
-			 - supprimer une séance
-			 - modifier une séance
+	editer séances :
+                - ajouter une séance (noms et exos)
+                - supprimer une séance
+                - modifier une séance
 
-	editer séances effectuées : - modifier une séance effectuée
+	statistiques :
+                - temps total
+                - nb séances
+                - temps moyen séance
+                - nb exercices faits
 
-	démarrer une séance : - carousel d'exos
-			      - pour chaque exo : nb de séries prévu (celle en cours + les autres grisées)
-			      - chaque série propose d'ajouter un poids et un nb de rep
+	editer séances effectuées :
+                    - modifier une séance effectuée
+
+	démarrer une séance :
+                    - carousel d'exos
+                    - pour chaque exo : nb de séries prévu (celle en cours + les autres grisées)
+                    - chaque série propose d'ajouter un poids et un nb de rep
 	
-	Déroulement séance : - bouton démarrer en bas de la vue démarrer une séance
-			     - démarrer lance un chrono, un bouton repos apparait
-			     - lors du clic sur repos le bouton devient "suivant", un chrono de repos se lance 
-			     - lors du clic sur suivant la derniere série se grise, la suivante se dégrise, le chrono repos se stop et un nouveau chrono se lance
-			     - a tout moment l'user peut cliquer sur terminer pour passer a l'exo suivant
-			     - a la fin de la séance : sauvegarde + proposer de voir la séance pour la modifier (poids, reps)
+	Déroulement séance :
+                    - bouton démarrer en bas de la vue démarrer une séance
+                    - démarrer lance un chrono, un bouton repos apparait
+                    - lors du clic sur repos le bouton devient "suivant", un chrono de repos se lance
+                    - lors du clic sur suivant la derniere série se grise, la suivante se dégrise, le chrono repos se stop et un nouveau chrono se lance
+                    - a tout moment l'user peut cliquer sur terminer pour passer a l'exo suivant
+                    - a la fin de la séance : sauvegarde + proposer de voir la séance pour la modifier (poids, reps)
+
 
 V2 : API Spotify

@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GoMuscu</string>
+    <string name="app_title">GoMuscu</string>
     <string name="lundi">Lun</string>
     <string name="mardi">Mar</string>
     <string name="mercredi">Mer</string>
@@ -7,4 +9,11 @@
     <string name="vendredi">Ven</string>
     <string name="samedi">Sam</string>
     <string name="dimanche">Dim</string>
+    <string name="btn_edit_planning">Editer\nplanning</string>
+    <string name="btn_edit_seances">Editer\nséances</string>
+    <string name="btn_view_historique">Historique\nséances</string>
+    <string name="stat_total_temps">Temps total cumulé</string>
+    <string name="stat_total_seances">Séances effectuées</string>
+    <string name="stat_total_exos">Exercices faits</string>
+    <string name="stat_moyenne_temps">Durée moyenne</string>
 </resources>
