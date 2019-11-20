@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreerSeance"></activity>
+        <activity android:name=".SeancesFragment"></activity>
+        <activity android:name=".CreerSeance" />
         <activity android:name=".EditerSeance" />
         <activity
             android:name=".MainActivity"
