@@ -16,4 +16,10 @@
     <string name="stat_total_seances">Séances effectuées</string>
     <string name="stat_total_exos">Exercices faits</string>
     <string name="stat_moyenne_temps">Durée moyenne</string>
+    <string name="btn_creer_seance">Créer une nouvelle séance</string>
+    <string name="hint_recherche_seance">Intitulé de la séance recherchée</string>
+    <string name="btn_retour_menu">Retour au menu</string>
+    <string name="btn_annuler">Annuler</string>
+    <string name="btn_sauvegarder">Sauvegarder</string>
+    <string name="hint_nouvelle_seance">Intitulé nouvelle séance</string>
 </resources>

@@ -3,6 +3,7 @@ package com.app.gomuscu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickEditSeances(View view) {
-        System.out.println("click edit planning");
+        Intent intent = new Intent(this, EditerSeance.class);
+        startActivity(intent);
     }
 
     public void onClickViewHistorique(View view) {
