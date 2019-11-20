@@ -16,4 +16,10 @@
     <string name="stat_total_seances">Sessions done</string>
     <string name="stat_total_exos">Exercises done</string>
     <string name="stat_moyenne_temps">Average session</string>
+    <string name="btn_creer_seance">Create new session</string>
+    <string name="hint_recherche_seance">Name of the searched session</string>
+    <string name="btn_retour_menu">Back to menu</string>
+    <string name="btn_annuler">Cancel</string>
+    <string name="btn_sauvegarder">Save</string>
+    <string name="hint_nouvelle_seance">New seance name</string>
 </resources>
