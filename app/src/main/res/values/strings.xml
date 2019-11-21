@@ -22,4 +22,6 @@
     <string name="btn_annuler">Annuler</string>
     <string name="btn_sauvegarder">Sauvegarder</string>
     <string name="hint_nouvelle_seance">Intitulé nouvelle séance</string>
+    <string name="tv_nom_exo">Nom exercice :</string>
+    <string name="btn_ajout_exo">Ajouter un exercice</string>
 </resources>
