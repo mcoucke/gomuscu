@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d4fc48ae33dd6730930087f0297da2aa",
+    "identityHash": "4ffed97e7a88c61b761ed188b1399f96",
     "entities": [
       {
         "tableName": "Exercice",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nom` TEXT, `description` TEXT, `type` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nom` TEXT, `description` TEXT, `type` TEXT, `image` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -29,6 +29,12 @@
           {
             "fieldPath": "type",
             "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -244,7 +250,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd4fc48ae33dd6730930087f0297da2aa')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4ffed97e7a88c61b761ed188b1399f96')"
     ]
   }
 }

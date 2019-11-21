@@ -1,6 +1,7 @@
 package com.app.gomuscu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -20,16 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         GoMuscuViewModel goMuscuViewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
-//        Exercice test = new Exercice("pull over", "faire des pull over mon pote", "pecs");
-//
-//        float oui = goMuscuViewModel.insertExercice(test);
-//        System.out.println("TEST INSERT : " + oui);
-//
-//        List<Exercice> aled = goMuscuViewModel.getAllExercices();
-//        System.out.println("LEN EXO : " + aled.size());
-//        for (int i = 0; i < aled.size(); i++) {
-//            System.out.println(aled.get(i));
-//        }
+
+        goMuscuViewModel.getAllExercices().observe(this, new Observer<List<Exercice>>() {
+            @Override
+            public void onChanged(List<Exercice> exercices) {
+                afficherExos(exercices);
+            }
+        });
+
+    }
+
+    public void afficherExos(List<Exercice> exercices) {
+        for (int i = 0; i < exercices.size(); i++) {
+            System.out.println(exercices.get(i));
+        }
     }
 
     public void onImageClick(View view) {

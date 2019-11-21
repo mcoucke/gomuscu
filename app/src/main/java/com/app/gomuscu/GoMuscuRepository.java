@@ -4,6 +4,8 @@ import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
 import com.app.gomuscu.entity.Exercice;
 
 import java.util.Arrays;
@@ -19,8 +21,8 @@ public class GoMuscuRepository {
         this.dao = db.getGoMuscuDao();
     }
 
-    public List<Exercice> getAllExercices() {
-        List<Exercice> liste = null;
+    public LiveData<List<Exercice>> getAllExercices() {
+        LiveData<List<Exercice>> liste = null;
         try {
             liste = new GetAllExercicesAsyncTask(this.dao).execute().get();
             System.out.println("LISTE" + liste);
@@ -30,7 +32,7 @@ public class GoMuscuRepository {
         return liste;
     }
 
-    private static class GetAllExercicesAsyncTask extends AsyncTask<Void, Void, List<Exercice>> {
+    private static class GetAllExercicesAsyncTask extends AsyncTask<Void, Void, LiveData<List<Exercice>>> {
         private GoMuscuDao dao;
 
         GetAllExercicesAsyncTask(GoMuscuDao dao) {
@@ -38,7 +40,7 @@ public class GoMuscuRepository {
         }
 
         @Override
-        protected List<Exercice> doInBackground(Void... voids) {
+        protected LiveData<List<Exercice>> doInBackground(Void... voids) {
             return this.dao.getAllExercices();
         }
     }

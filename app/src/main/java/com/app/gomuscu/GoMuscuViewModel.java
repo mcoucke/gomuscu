@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.app.gomuscu.entity.Exercice;
 
@@ -18,7 +19,7 @@ public class GoMuscuViewModel extends AndroidViewModel {
         this.goMuscuRepository = new GoMuscuRepository(application);
     }
 
-    public List<Exercice> getAllExercices() {
+    public LiveData<List<Exercice>> getAllExercices() {
         return goMuscuRepository.getAllExercices();
     }
 
