@@ -112,8 +112,7 @@ public class Exercice {
     @NonNull
     @Override
     public String toString() {
-        String out = "Exercice : " + this.nom + " - " + this.type + "\n";
-        out += this.description;
+        String out = this.nom;
         return out;
     }
 }
