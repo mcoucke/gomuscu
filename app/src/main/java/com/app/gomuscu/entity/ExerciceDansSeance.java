@@ -8,10 +8,15 @@ import androidx.room.PrimaryKey;
 public class ExerciceDansSeance {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    @ForeignKey(entity = Exercice.class, parentColumns = "id", childColumns = "idExercice")
-    private int idExercice;
     @ForeignKey(entity = Seance.class, parentColumns = "id", childColumns = "idSeance")
     private int idSeance;
+    @ForeignKey(entity = Exercice.class, parentColumns = "id", childColumns = "idExercice")
+    private int idExercice;
+
+    public ExerciceDansSeance(int idSeance, int idExercice) {
+        this.idSeance = idSeance;
+        this.idExercice = idExercice;
+    }
 
     public int getId() {
         return id;
@@ -21,19 +26,19 @@ public class ExerciceDansSeance {
         this.id = id;
     }
 
-    public int getIdExercice() {
-        return idExercice;
-    }
-
-    public void setIdExercice(int idExercice) {
-        this.idExercice = idExercice;
-    }
-
     public int getIdSeance() {
         return idSeance;
     }
 
     public void setIdSeance(int idSeance) {
         this.idSeance = idSeance;
+    }
+
+    public int getIdExercice() {
+        return idExercice;
+    }
+
+    public void setIdExercice(int idExercice) {
+        this.idExercice = idExercice;
     }
 }

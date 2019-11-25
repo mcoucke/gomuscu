@@ -38,7 +38,7 @@
             android:layout_columnWeight="1"
             android:padding="2dp"
             android:background="#222222"
-            android:id="@+id/layout_lundi">
+            android:id="@+id/layout_jour1">
 
             <TextView
                 android:layout_width="@dimen/days_text_width"
@@ -48,8 +48,7 @@
                 android:textSize="@dimen/days_font_size"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:text="@string/lundi"
-                android:id="@+id/text_lundi" />
+                android:id="@+id/text_jour1" />
 
         </LinearLayout>
 
@@ -63,7 +62,7 @@
             android:layout_columnWeight="1"
             android:padding="2dp"
             android:background="#222222"
-            android:id="@+id/layout_mardi">
+            android:id="@+id/layout_jour2">
 
             <TextView
                 android:layout_width="@dimen/days_text_width"
@@ -73,8 +72,7 @@
                 android:textSize="@dimen/days_font_size"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:text="@string/mardi"
-                android:id="@+id/text_mardi"/>
+                android:id="@+id/text_jour2"/>
 
         </LinearLayout>
 
@@ -89,7 +87,7 @@
             android:layout_columnWeight="1"
             android:padding="2dp"
             android:background="#222222"
-            android:id="@+id/layout_mercredi">
+            android:id="@+id/layout_jour3">
 
             <TextView
                 android:layout_width="@dimen/days_text_width"
@@ -99,8 +97,7 @@
                 android:textSize="@dimen/days_font_size"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:text="@string/mercredi"
-                android:id="@+id/text_mercredi"/>
+                android:id="@+id/text_jour3"/>
 
         </LinearLayout>
 
@@ -114,7 +111,7 @@
             android:layout_columnWeight="1"
             android:padding="2dp"
             android:background="#222222"
-            android:id="@+id/layout_jeudi">
+            android:id="@+id/layout_jour4">
 
             <TextView
                 android:layout_width="@dimen/days_text_width"
@@ -124,8 +121,7 @@
                 android:textSize="@dimen/days_font_size"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:text="@string/jeudi"
-                android:id="@+id/text_jeudi"/>
+                android:id="@+id/text_jour4"/>
 
         </LinearLayout>
 
@@ -138,8 +134,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick"
-            android:src="@drawable/work_day" />
+            android:onClick="onImageClick" />
 
         <ImageView
             android:id="@+id/img_day2"
@@ -150,8 +145,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick"
-            android:src="@drawable/work_day" />
+            android:onClick="onImageClick" />
 
         <ImageView
             android:id="@+id/img_day3"
@@ -162,8 +156,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick"
-            android:src="@drawable/work_day" />
+            android:onClick="onImageClick" />
 
         <ImageView
             android:id="@+id/img_day4"
@@ -174,8 +167,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick"
-            android:src="@drawable/rest_day" />
+            android:onClick="onImageClick" />
 
 
     </GridLayout>

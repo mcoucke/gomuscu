@@ -12,9 +12,6 @@ public class Seance {
     private int id;
     private String nom;
 
-    @Ignore
-    private List<Exercice> exercices;
-
     public Seance(String nom) {
         this.nom = nom;
     }
@@ -35,11 +32,4 @@ public class Seance {
         this.nom = nom;
     }
 
-    public List<Exercice> getExercices() {
-        return exercices;
-    }
-
-    public void setExercices(List<Exercice> exercices) {
-        this.exercices = exercices;
-    }
 }
