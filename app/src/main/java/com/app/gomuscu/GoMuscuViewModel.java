@@ -55,7 +55,15 @@ public class GoMuscuViewModel extends AndroidViewModel {
         return goMuscuRepository.getExerciceByNom(nom);
     }
 
+    public Seance getSeanceById(int id) {
+        return goMuscuRepository.getSeanceById(id);
+    }
+
     public Journee getJourneeByDate(Date date) {
         return goMuscuRepository.getJourneeByDate(date);
+    }
+
+    public LiveData<List<Journee>> getAllJourneesFromDate(Date date) {
+        return goMuscuRepository.getAllJourneesFromDate(date);
     }
 }

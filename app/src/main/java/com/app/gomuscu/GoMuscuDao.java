@@ -55,7 +55,13 @@ public interface GoMuscuDao {
     @Query("SELECT * FROM Exercice WHERE nom = :nom")
     public Exercice getExerciceByNom(String... nom);
 
+    @Query("SELECT * FROM Seance WHERE id = :id")
+    public Seance getSeanceById(Integer... id);
+
     @Query("SELECT * FROM Journee WHERE date = :date")
     public Journee getJourneeByDate(Date... date);
+
+    @Query("SELECT * FROM Journee WHERE date >= :date")
+    public LiveData<List<Journee>> getAllJourneesFromDate(Date... date);
 
 }

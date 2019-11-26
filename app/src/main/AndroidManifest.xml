@@ -12,6 +12,7 @@
         <activity android:name=".SeancesFragment" />
         <activity android:name=".CreerSeance" />
         <activity android:name=".EditerSeance" />
+        <activity android:name=".EditerPlanning" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">

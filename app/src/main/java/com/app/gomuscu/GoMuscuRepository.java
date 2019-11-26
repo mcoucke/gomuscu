@@ -143,17 +143,17 @@ public class GoMuscuRepository {
     public LiveData<List<Seance>> getAllSeances() {
         LiveData<List<Seance>> liste = null;
         try {
-            liste = new getAllSeancesAsyncTask(this.dao).execute().get();
+            liste = new GetAllSeancesAsyncTask(this.dao).execute().get();
         } catch (InterruptedException | ExecutionException e) {
             Log.d("erreurs", "getAllSeances : " + e.getMessage());
         }
         return liste;
     }
 
-    private static class getAllSeancesAsyncTask extends AsyncTask<Void, Void, LiveData<List<Seance>>> {
+    private static class GetAllSeancesAsyncTask extends AsyncTask<Void, Void, LiveData<List<Seance>>> {
         private GoMuscuDao dao;
 
-        getAllSeancesAsyncTask(GoMuscuDao dao) {
+        GetAllSeancesAsyncTask(GoMuscuDao dao) {
             this.dao = dao;
         }
 
@@ -166,17 +166,17 @@ public class GoMuscuRepository {
     public LiveData<List<Journee>> getAllJournees() {
         LiveData<List<Journee>> liste = null;
         try {
-            liste = new getAllJourneesAsyncTask(this.dao).execute().get();
+            liste = new GetAllJourneesAsyncTask(this.dao).execute().get();
         } catch (InterruptedException | ExecutionException e) {
             Log.d("erreurs", "getAllJournees : " + e.getMessage());
         }
         return liste;
     }
 
-    private static class getAllJourneesAsyncTask extends AsyncTask<Void, Void, LiveData<List<Journee>>> {
+    private static class GetAllJourneesAsyncTask extends AsyncTask<Void, Void, LiveData<List<Journee>>> {
         private GoMuscuDao dao;
 
-        getAllJourneesAsyncTask(GoMuscuDao dao) {
+        GetAllJourneesAsyncTask(GoMuscuDao dao) {
             this.dao = dao;
         }
 
@@ -189,18 +189,18 @@ public class GoMuscuRepository {
     public LiveData<List<ExerciceDansSeance>> getAllExercicesDansSeancesById(int id) {
         LiveData<List<ExerciceDansSeance>> liste = null;
         try {
-            liste = new getAllExercicesDansSeancesByIdAsyncTask(this.dao).execute(id).get();
+            liste = new GetAllExercicesDansSeancesByIdAsyncTask(this.dao).execute(id).get();
         } catch (InterruptedException | ExecutionException e) {
             Log.d("erreurs", "getAllExercicesDansSeancesBySeanceId : " + e.getMessage());
         }
         return liste;
     }
 
-    private static class getAllExercicesDansSeancesByIdAsyncTask
+    private static class GetAllExercicesDansSeancesByIdAsyncTask
             extends AsyncTask<Integer, Void, LiveData<List<ExerciceDansSeance>>> {
         private GoMuscuDao dao;
 
-        getAllExercicesDansSeancesByIdAsyncTask(GoMuscuDao dao) {
+        GetAllExercicesDansSeancesByIdAsyncTask(GoMuscuDao dao) {
             this.dao = dao;
         }
 
@@ -213,17 +213,17 @@ public class GoMuscuRepository {
     public Exercice getExerciceByNom(String nom) {
         Exercice exercice = null;
         try {
-            exercice = new getExerciceByNomAsyncTask(this.dao).execute(nom).get();
+            exercice = new GetExerciceByNomAsyncTask(this.dao).execute(nom).get();
         } catch (InterruptedException | ExecutionException e) {
             Log.d("erreurs", "getExerciceByNom : " + e.getMessage());
         }
         return exercice;
     }
 
-    private static class getExerciceByNomAsyncTask extends AsyncTask<String, Void, Exercice> {
+    private static class GetExerciceByNomAsyncTask extends AsyncTask<String, Void, Exercice> {
         private GoMuscuDao dao;
 
-        getExerciceByNomAsyncTask(GoMuscuDao dao) {
+        GetExerciceByNomAsyncTask(GoMuscuDao dao) {
             this.dao = dao;
         }
 
@@ -233,26 +233,72 @@ public class GoMuscuRepository {
         }
     }
 
+    public Seance getSeanceById(int id) {
+        Seance seance = null;
+        try {
+            seance = new GetSeanceByIdAsyncTask(this.dao).execute(id).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getSeanceById : " + e.getMessage());
+        }
+        return seance;
+    }
+
+    private static class GetSeanceByIdAsyncTask extends AsyncTask<Integer, Void, Seance> {
+        private GoMuscuDao dao;
+
+        GetSeanceByIdAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Seance doInBackground(Integer... integers) {
+            return this.dao.getSeanceById(integers);
+        }
+    }
+
     public Journee getJourneeByDate(Date date) {
         Journee journee = null;
         try {
-            journee = new getJourneeByDateAsyncTask(this.dao).execute(date).get();
+            journee = new GetJourneeByDateAsyncTask(this.dao).execute(date).get();
         } catch (InterruptedException | ExecutionException e) {
             Log.d("erreurs", "getJourneeByDate : " + e.getMessage());
         }
         return journee;
     }
 
-    private static class getJourneeByDateAsyncTask extends AsyncTask<Date, Void, Journee> {
+    private static class GetJourneeByDateAsyncTask extends AsyncTask<Date, Void, Journee> {
         private GoMuscuDao dao;
 
-        getJourneeByDateAsyncTask(GoMuscuDao dao) {
+        GetJourneeByDateAsyncTask(GoMuscuDao dao) {
             this.dao = dao;
         }
 
         @Override
         protected Journee doInBackground(Date... dates) {
             return this.dao.getJourneeByDate(dates);
+        }
+    }
+
+    public LiveData<List<Journee>> getAllJourneesFromDate(Date date) {
+        LiveData<List<Journee>> journees = null;
+        try {
+            journees = new GetAllJourneesFromDateAsyncTask(this.dao).execute(date).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getJourneesFromDate : " + e.getMessage());
+        }
+        return journees;
+    }
+
+    private static class GetAllJourneesFromDateAsyncTask extends AsyncTask<Date, Void, LiveData<List<Journee>>> {
+        private GoMuscuDao dao;
+
+        GetAllJourneesFromDateAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected LiveData<List<Journee>> doInBackground(Date... dates) {
+            return this.dao.getAllJourneesFromDate(dates);
         }
     }
 

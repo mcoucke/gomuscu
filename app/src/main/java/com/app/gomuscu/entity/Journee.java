@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -34,4 +35,5 @@ public class Journee {
     public void setIdSeance(int idSeance) {
         this.idSeance = idSeance;
     }
+
 }

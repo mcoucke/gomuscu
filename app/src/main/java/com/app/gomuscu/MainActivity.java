@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
         // Récupération du ViewModel pour interroger la base
         GoMuscuViewModel goMuscuViewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
-        Seance sampleSeance = new Seance("SampleSeance");
-        long idSampleSeance = goMuscuViewModel.insertSeance(sampleSeance);
-
         // Remplissage du planning avec séances si existantes
         Calendar cal = Calendar.getInstance();
         // Les dates insérées doivent impérativement être définies sans heure/minutes/...
@@ -121,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickEditPlanning(View view) {
-        System.out.println("click edit planning");
+        Intent intent = new Intent(this, EditerPlanning.class);
+        startActivity(intent);
     }
 
     public void onClickEditSeances(View view) {
