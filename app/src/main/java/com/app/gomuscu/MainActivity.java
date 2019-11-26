@@ -54,32 +54,18 @@ public class MainActivity extends AppCompatActivity {
         Seance sampleSeance = new Seance("SampleSeance");
         long idSampleSeance = goMuscuViewModel.insertSeance(sampleSeance);
 
-        Calendar sampleCalendar = Calendar.getInstance();
-        sampleCalendar.set(Calendar.HOUR_OF_DAY, 0);
-        sampleCalendar.set(Calendar.MINUTE, 0);
-        sampleCalendar.set(Calendar.SECOND, 0);
-        sampleCalendar.set(Calendar.MILLISECOND, 0);
-        sampleCalendar.add(Calendar.DAY_OF_YEAR, 3);
-        Date dateSample = sampleCalendar.getTime();
-        Journee sampleJournee = new Journee(dateSample, (int)idSampleSeance);
-
-        goMuscuViewModel.insertJournee(sampleJournee);
-
-        System.out.println("TEST SAMPLE DATE SEANCE SHOULD : " + dateSample + " IS : " + goMuscuViewModel.getJourneeByDate(dateSample).getDate());
-
         // Remplissage du planning avec séances si existantes
         Calendar cal = Calendar.getInstance();
+        // Les dates insérées doivent impérativement être définies sans heure/minutes/...
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
-
         Date dateFor = cal.getTime();
         // Insert dans listeJournees les objets Journee correspondants à aujourd'hui
         // et aux 3 prochains jours (null si pas de Journee), définition des dates du planning
         String dateAffichee;
         for (int i = 0 ; i < this.NB_JOURS; i++) {
-            System.out.println("DATE LOOP : "+dateFor);
             // Jour écrit en français si l'appareil est réglé en fr, anglais sinon
             if(Locale.getDefault().getLanguage().equals("fr")) {
                 dateAffichee = new SimpleDateFormat("EE", Locale.FRANCE).format(dateFor.getTime()) + "\n";
@@ -89,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
             // On ajoute la date du jour
             dateAffichee += new SimpleDateFormat("dd/MM").format(dateFor.getTime());
             listeTextes.get(i).setText(dateAffichee);
-            Journee journeeFor = goMuscuViewModel.getJourneeByDate(dateFor);
-            System.out.println("JOURNEE FOR : " + journeeFor);
-            this.listeJournees.add(journeeFor);
+            // On insère la journée dans la liste
+            this.listeJournees.add(goMuscuViewModel.getJourneeByDate(dateFor));
+            // Date suivante
             cal.add(Calendar.DAY_OF_YEAR, 1);
             dateFor = cal.getTime();
         }
@@ -106,21 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
-//        goMuscuViewModel.getAllExercicesDansSeancesById(testGetJournee.getIdSeance()).observe(this, new Observer<List<ExerciceDansSeance>>() {
-//            @Override
-//            public void onChanged(List<ExerciceDansSeance> exercices) {
-//                afficherExos(exercices);
-//            }
-//        });
-
     }
-
-//    public void afficherExos(List<ExerciceDansSeance> exercices) {
-//        for (int i = 0; i < exercices.size(); i++) {
-//            System.out.println(exercices.get(i));
-//        }
-//    }
 
     public void onImageClick(View view) {
         System.out.println("click image planning");
