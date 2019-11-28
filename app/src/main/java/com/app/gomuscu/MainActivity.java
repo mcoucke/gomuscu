@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.app.gomuscu.entity.Exercice;
 import com.app.gomuscu.entity.ExerciceDansSeance;
+import com.app.gomuscu.entity.Historique;
 import com.app.gomuscu.entity.Journee;
 import com.app.gomuscu.entity.Seance;
 
@@ -89,6 +90,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // Statistiques
+
+        goMuscuViewModel.getAllHistoriques().observe(this, new Observer<List<Historique>>() {
+            @Override
+            public void onChanged(List<Historique> historiques) {
+                setStatistiquesHistoriques(historiques);
+            }
+        });
+
+        goMuscuViewModel.getExerciceDansHistoriqueCount().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer nbExercices) {
+                TextView tv_total_exos = (TextView) findViewById(R.id.tv_total_exos);
+                tv_total_exos.setText(String.valueOf(nbExercices));
+            }
+        });
+
     }
 
     public void onImageClick(View view) {
@@ -129,5 +147,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickViewHistorique(View view) {
         System.out.println("click edit planning");
+    }
+
+    public void setStatistiquesHistoriques(List<Historique> historiques) {
+        int total_duree_sec = 0;
+        for(int i = 0; i < historiques.size(); i++) {
+            total_duree_sec += historiques.get(i).getDureeSecondes();
+        }
+        int total_duree_min = 0;
+        int duree_min_moy = 0;
+        if (total_duree_sec != 0) {
+            total_duree_min = total_duree_sec/60;
+            duree_min_moy = (total_duree_sec / historiques.size())/60;
+        }
+        int nb_seances = historiques.size();
+
+        TextView tv_total_sec = (TextView) findViewById(R.id.tv_total_sec);
+        tv_total_sec.setText(total_duree_min + "min");
+        TextView tv_total_seances = (TextView) findViewById(R.id.tv_total_seances);
+        tv_total_seances.setText(String.valueOf(nb_seances));
+        TextView tv_duree_moyenne = (TextView) findViewById(R.id.tv_duree_moyenne);
+        tv_duree_moyenne.setText(duree_min_moy + "min");
     }
 }

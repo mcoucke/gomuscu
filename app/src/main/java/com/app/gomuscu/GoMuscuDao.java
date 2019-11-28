@@ -9,7 +9,9 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.app.gomuscu.entity.Exercice;
+import com.app.gomuscu.entity.ExerciceDansHistorique;
 import com.app.gomuscu.entity.ExerciceDansSeance;
+import com.app.gomuscu.entity.Historique;
 import com.app.gomuscu.entity.Journee;
 import com.app.gomuscu.entity.Seance;
 
@@ -49,6 +51,9 @@ public interface GoMuscuDao {
     @Query("SELECT * FROM Journee")
     public LiveData<List<Journee>> getAllJournees();
 
+    @Query("SELECT * FROM Historique")
+    public LiveData<List<Historique>> getAllHistoriques();
+
     @Query("SELECT * FROM ExerciceDansSeance WHERE idSeance = :id_seance")
     public LiveData<List<ExerciceDansSeance>> getAllExercicesDansSeancesById(Integer... id_seance);
 
@@ -63,5 +68,11 @@ public interface GoMuscuDao {
 
     @Query("SELECT * FROM Journee WHERE date >= :date")
     public LiveData<List<Journee>> getAllJourneesFromDate(Date... date);
+
+    @Query("SELECT * FROM ExerciceDansHistorique WHERE idHistorique = :id")
+    public LiveData<List<ExerciceDansHistorique>> getAllExerciceDansHistoriqueById(Integer... id);
+
+    @Query("SELECT COUNT(*) FROM ExerciceDansHistorique")
+    public LiveData<Integer> getExerciceDansHistoriqueCount();
 
 }
