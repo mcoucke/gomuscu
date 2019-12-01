@@ -17,4 +17,5 @@
     <string name="hint_nouvelle_seance">Intitulé nouvelle séance</string>
     <string name="tv_nom_exo">Nom exercice :</string>
     <string name="btn_ajout_exo">Ajouter un exercice</string>
+    <string name="btn_demarrer_seance">Démarrer la séance du jour</string>
 </resources>

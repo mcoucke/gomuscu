@@ -14,8 +14,9 @@
     <string name="btn_retour_menu">Back to menu</string>
     <string name="btn_annuler">Cancel</string>
     <string name="btn_sauvegarder">Save</string>
-    <string name="hint_nouvelle_seance">New seance name</string>
+    <string name="hint_nouvelle_seance">New session name</string>
     <string name="tv_nom_exo">Exercice name :</string>
     <string name="btn_ajout_exo">Add exercice</string>
+    <string name="btn_demarrer_seance">Start session of the day</string>
 
 </resources>

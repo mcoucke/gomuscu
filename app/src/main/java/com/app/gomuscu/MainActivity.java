@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -90,6 +91,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // Bouton démarrage de séance
+        Button boutonLancerSeance = (Button) findViewById(R.id.btn_demarrer_seance);
+        // Si il y a une séance aujourd'hui on active le bouton
+        if (this.listeJournees.get(0) != null) {
+            boutonLancerSeance.setEnabled(true);
+        } else {
+            boutonLancerSeance.setEnabled(false);
+        }
+
         // Statistiques
 
         goMuscuViewModel.getAllHistoriques().observe(this, new Observer<List<Historique>>() {
@@ -109,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onImageClick(View view) {
+    public void onClickImage(View view) {
         System.out.println("click image planning");
         switch (view.getId()) {
             case R.id.img_day1 :
@@ -147,6 +157,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickViewHistorique(View view) {
         System.out.println("click edit planning");
+    }
+
+    public void onCLickDemarrerSeance(View view) {
+        Intent intent = new Intent(this, DemarrerSeance.class);
+        startActivity(intent);
     }
 
     public void setStatistiquesHistoriques(List<Historique> historiques) {
