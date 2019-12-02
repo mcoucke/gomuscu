@@ -7,7 +7,7 @@
     tools:context=".SeancesFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_nom_seance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
