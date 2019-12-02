@@ -19,6 +19,8 @@ import java.util.List;
 
 public class AjoutExerciceFragment extends Fragment {
 
+    private View view;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +29,14 @@ public class AjoutExerciceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_ajout_exercice, container, false);
+        view = inflater.inflate(R.layout.fragment_ajout_exercice, container, false);
 
         GoMuscuViewModel goMuscuViewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
         goMuscuViewModel.getAllExercices().observe(this, new Observer<List<Exercice>>() {
             @Override
             public void onChanged(List<Exercice> exercices) {
-                setSpinner(exercices, view);
+                setSpinner(exercices);
             }
         });
 
@@ -42,11 +44,17 @@ public class AjoutExerciceFragment extends Fragment {
     }
 
 
-    private void setSpinner(List<Exercice> listeExercice, View view){
+    private void setSpinner(List<Exercice> listeExercice){
         ArrayAdapter<Exercice> dataAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, listeExercice);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         Spinner spinner = view.findViewById(R.id.spinner);
         spinner.setAdapter(dataAdapter);
+    }
+
+    public int getIdExerciceSelected(){
+        Spinner spinner = view.findViewById(R.id.spinner);
+        Exercice exo = (Exercice) spinner.getSelectedItem();
+        return exo.getId();
     }
 }
