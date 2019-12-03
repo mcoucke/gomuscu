@@ -13,6 +13,7 @@ import com.app.gomuscu.entity.ExerciceDansHistorique;
 import com.app.gomuscu.entity.ExerciceDansSeance;
 import com.app.gomuscu.entity.Historique;
 import com.app.gomuscu.entity.Journee;
+import com.app.gomuscu.entity.Repetition;
 import com.app.gomuscu.entity.Seance;
 
 import java.util.Date;
@@ -24,23 +25,29 @@ public interface GoMuscuDao {
     @Insert
     public long[] insertExercices(Exercice... exercices);
 
-//    @Update
-//    public void updateExercices(Exercice... exercices);
-//
-//    @Delete
-//    public void deleteExercices(Exercice... exercices);
-
     @Insert
     public long[] insertSeances(Seance... seances);
 
     @Insert
     public long[] insertExercicesDansSeances(ExerciceDansSeance... exercicesDansSeances);
 
+    @Insert
+    public long[] insertExercicesDansHistoriques(ExerciceDansHistorique... exerciceDansHistoriques);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public long[] insertJournees(Journee... journees);
 
+    @Insert
+    public long[] insertHistoriques(Historique... historiques);
+
+    @Insert
+    public long[] insertRepetitions(Repetition... repetitions);
+
 //    @Delete
 //    public void deleteExercicesDansSeances(ExerciceDansSeance... exercicesDansSeances);
+
+    @Delete
+    public void deleteJournees(Journee... journees);
 
     @Query("SELECT * FROM Exercice")
     public LiveData<List<Exercice>> getAllExercices();
@@ -59,6 +66,9 @@ public interface GoMuscuDao {
 
     @Query("SELECT * FROM Exercice WHERE nom = :nom")
     public Exercice getExerciceByNom(String... nom);
+
+    @Query("SELECT * FROM Exercice WHERE id = :id")
+    public Exercice getExerciceById(Integer... id);
 
     @Query("SELECT * FROM Seance WHERE id = :id")
     public Seance getSeanceById(Integer... id);

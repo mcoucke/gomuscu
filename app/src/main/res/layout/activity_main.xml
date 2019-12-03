@@ -133,7 +133,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick" />
+            android:onClick="onClickImage" />
 
         <ImageView
             android:id="@+id/img_day2"
@@ -144,7 +144,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick" />
+            android:onClick="onClickImage" />
 
         <ImageView
             android:id="@+id/img_day3"
@@ -155,7 +155,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick" />
+            android:onClick="onClickImage" />
 
         <ImageView
             android:id="@+id/img_day4"
@@ -166,7 +166,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:onClick="onImageClick" />
+            android:onClick="onClickImage" />
 
 
     </GridLayout>
@@ -213,7 +213,16 @@
 
     </GridLayout>
 
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btn_demarrer_seance"
+        android:id="@+id/btn_demarrer_seance"
+        android:onClick="onCLickDemarrerSeance"
+        android:enabled="false" />
+
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:rowCount="2"

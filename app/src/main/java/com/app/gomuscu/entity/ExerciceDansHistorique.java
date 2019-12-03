@@ -13,6 +13,11 @@ public class ExerciceDansHistorique {
     @ForeignKey(entity = Historique.class, parentColumns = "id", childColumns = "idHistorique")
     private int idHistorique;
 
+    public ExerciceDansHistorique(int idExercice, int idHistorique) {
+        this.idExercice = idExercice;
+        this.idHistorique = idHistorique;
+    }
+
     public int getId() {
         return id;
     }
