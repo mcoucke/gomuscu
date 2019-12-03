@@ -54,14 +54,7 @@
             android:id="@+id/lin_lay_exercice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <fragment
-                android:id="@+id/fragment3"
-                android:name="com.app.gomuscu.AjoutExerciceFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:orientation="vertical"/>
     </ScrollView>
 
     <Button

@@ -59,7 +59,7 @@ public class CreerSeance extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         for(int i = 0; i < exerciceDansSeances.size(); ++i){
-            AjoutExerciceFragment fragment = new AjoutExerciceFragment(exerciceDansSeances.get(i).getIdExercice());
+            AjoutExerciceFragment fragment = new AjoutExerciceFragment(exerciceDansSeances.get(i).getIdExercice() - 1);
             fragmentTransaction.add(R.id.lin_lay_exercice, fragment);
         }
         fragmentTransaction.commit();
@@ -77,7 +77,7 @@ public class CreerSeance extends AppCompatActivity {
 
         if(this.seance != null){
             idSeance = this.seance.getId();
-            //Supprimer les anciens exos
+            goMuscuViewModel.deleteAllExercicesDansSeanceById((int) idSeance);
         }
         else{
             this.seance = new Seance(nomSeance);
