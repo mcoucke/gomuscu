@@ -39,12 +39,6 @@ public class ExerciceDansSeanceAdapter extends RecyclerView.Adapter<ExerciceDans
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Exercice exercice = viewModel.getExerciceById(this.data.get(position).getIdExercice());
         holder.textView.setText(exercice.getNom());
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickButton(v, position);
-            }
-        });
     }
 
     @Override
@@ -52,23 +46,16 @@ public class ExerciceDansSeanceAdapter extends RecyclerView.Adapter<ExerciceDans
         return this.data.size();
     }
 
-    public void onClickButton(View view, int position) {
-        Exercice exercice = viewModel.getExerciceById(this.data.get(position).getIdExercice());
-        Toast.makeText(view.getContext(), "position : " + position + " text : " + exercice.getNom(), Toast.LENGTH_SHORT).show();
-    }
-
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textView;
         private EditText etNbReps;
         private EditText etPoids;
-        private Button button;
 
         public ViewHolder(View view) {
             super(view);
             this.textView = view.findViewById(R.id.tvNomExo);
             this.etNbReps = view.findViewById(R.id.etNbRepListeExercices);
             this.etPoids = view.findViewById(R.id.etPoidsListeExercices);
-            this.button = view.findViewById(R.id.btn_valider_nbRep_poids);
 
         }
         @Override

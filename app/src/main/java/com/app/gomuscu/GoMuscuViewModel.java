@@ -91,6 +91,10 @@ public class GoMuscuViewModel extends AndroidViewModel {
         return goMuscuRepository.getSeanceById(id);
     }
 
+    public Historique getHistoriqueById(int id) {
+        return goMuscuRepository.getHistoriqueById(id);
+    }
+
     public Journee getJourneeByDate(Date date) {
         return goMuscuRepository.getJourneeByDate(date);
     }
@@ -109,5 +113,9 @@ public class GoMuscuViewModel extends AndroidViewModel {
 
     public ExerciceDansHistorique getExerciceDansHistoriqueById(int id_historique, int id_exercice) {
         return goMuscuRepository.getExerciceDansHistoriqueById(id_historique, id_exercice);
+    }
+
+    public Repetition getRepetitionByIdExercice(Integer id) {
+        return goMuscuRepository.getRepetitionByIdExercice(id);
     }
 }

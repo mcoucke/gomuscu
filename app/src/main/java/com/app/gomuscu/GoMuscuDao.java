@@ -73,6 +73,9 @@ public interface GoMuscuDao {
     @Query("SELECT * FROM Seance WHERE id = :id")
     public Seance getSeanceById(Integer... id);
 
+    @Query("SELECT * FROM Historique WHERE id = :id")
+    public Historique getHistoriqueById(Integer... id);
+
     @Query("SELECT * FROM Journee WHERE date = :date")
     public Journee getJourneeByDate(Date... date);
 
@@ -87,5 +90,8 @@ public interface GoMuscuDao {
 
     @Query("SELECT * FROM ExerciceDansHistorique WHERE idHistorique = :id_historique AND idExercice = :id_exercice")
     public ExerciceDansHistorique getExerciceDansHistoriqueById(Integer id_historique, Integer id_exercice);
+
+    @Query("SELECT * FROM Repetition WHERE idExerciceDansHistorique = :id_ex_historique")
+    public Repetition getRepetitionByIdExercice(Integer... id_ex_historique);
 
 }

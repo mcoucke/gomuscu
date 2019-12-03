@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gomuscu.entity.Exercice;
 import com.app.gomuscu.entity.ExerciceDansHistorique;
+import com.app.gomuscu.entity.Repetition;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ExerciceDansHistoriqueAdapter extends RecyclerView.Adapter<Exercice
 
     public void setData(List<ExerciceDansHistorique> exerciceDansHistoriqueList) {
         this.data = exerciceDansHistoriqueList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -39,6 +41,17 @@ public class ExerciceDansHistoriqueAdapter extends RecyclerView.Adapter<Exercice
                 this.id_historique, this.data.get(position).getIdExercice());
         Exercice exercice = viewModel.getExerciceById(exerciceDansHistorique.getIdExercice());
         holder.tvNomExercice.setText(exercice.getNom());
+        Repetition repetition = viewModel.getRepetitionByIdExercice(exerciceDansHistorique.getId());
+        String textNbRep = "/";
+        String textPoids = "/";
+        if(repetition.getNombre() != -1) {
+            textNbRep = ""+repetition.getNombre();
+        }
+        if(repetition.getPoids() != -1.0) {
+            textPoids = Float.toString(repetition.getPoids());
+        }
+        holder.tvNbRep.setText(textNbRep);
+        holder.tvPoids.setText(textPoids);
     }
 
     @Override
@@ -48,9 +61,14 @@ public class ExerciceDansHistoriqueAdapter extends RecyclerView.Adapter<Exercice
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvNomExercice;
+        TextView tvNbRep;
+        TextView tvPoids;
 
         public ViewHolder(View view) {
             super(view);
+            this.tvNomExercice = view.findViewById(R.id.tvBilanNomExo);
+            this.tvNbRep = view.findViewById(R.id.tvBilanNbRepExercice);
+            this.tvPoids = view.findViewById(R.id.tvBilanPoidsExercice);
         }
 
         @Override

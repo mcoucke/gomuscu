@@ -44,10 +44,10 @@ public class DemarrerSeance extends AppCompatActivity {
         setContentView(R.layout.demarrer_seance);
 
         Intent mIntent = getIntent();
+        int id_seance = mIntent.getIntExtra("id_seance", 0);
 
         this.viewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
-        int id_seance = mIntent.getIntExtra("id_seance", 0);
         this.seance = this.viewModel.getSeanceById(id_seance);
         if (this.seance == null) {
             finish();
@@ -178,7 +178,10 @@ public class DemarrerSeance extends AppCompatActivity {
     }
 
     public void voirHistorique(int id_historique) {
-        //Fin activity, lance BilanSeance
+        Intent intent = new Intent(this, BilanSeance.class);
+        intent.putExtra("id_historique", id_historique);
+        finish();
+        startActivity(intent);
     }
 
     /**
@@ -192,7 +195,6 @@ public class DemarrerSeance extends AppCompatActivity {
             ((TextView) view.findViewById(R.id.tvNomExo)).setEnabled(true);
             ((EditText) view.findViewById(R.id.etNbRepListeExercices)).setEnabled(true);
             ((EditText) view.findViewById(R.id.etPoidsListeExercices)).setEnabled(true);
-            ((Button) view.findViewById(R.id.btn_valider_nbRep_poids)).setEnabled(true);
         }
     }
 
@@ -207,7 +209,6 @@ public class DemarrerSeance extends AppCompatActivity {
             ((TextView) view.findViewById(R.id.tvNomExo)).setEnabled(false);
             ((EditText) view.findViewById(R.id.etNbRepListeExercices)).setEnabled(false);
             ((EditText) view.findViewById(R.id.etPoidsListeExercices)).setEnabled(false);
-            ((Button) view.findViewById(R.id.btn_valider_nbRep_poids)).setEnabled(false);
         }
 
     }

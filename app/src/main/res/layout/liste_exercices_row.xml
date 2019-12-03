@@ -44,14 +44,6 @@
             android:enabled="false"
             android:id="@+id/etPoidsListeExercices" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/btn_valider"
-            android:enabled="false"
-            android:id="@+id/btn_valider_nbRep_poids" />
-
     </LinearLayout>
 
 
