@@ -178,7 +178,7 @@ public class DemarrerSeance extends AppCompatActivity {
     }
 
     public void voirHistorique(int id_historique) {
-
+        //Fin activity, lance BilanSeance
     }
 
     /**

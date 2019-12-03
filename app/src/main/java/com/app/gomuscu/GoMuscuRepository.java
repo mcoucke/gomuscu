@@ -492,4 +492,34 @@ public class GoMuscuRepository {
         }
     }
 
+    public ExerciceDansHistorique getExerciceDansHistoriqueById(Integer id_historique, Integer id_exercice) {
+        ExerciceDansHistorique exerciceDansHistorique = null;
+        try {
+            exerciceDansHistorique = new GetExerciceDansHistoriqueByIdAsyncTask(
+                    this.dao, id_historique, id_exercice).execute().get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getExerciceDansHistoriqueById : " + e.getMessage());
+        }
+
+        return exerciceDansHistorique;
+    }
+
+    private static class GetExerciceDansHistoriqueByIdAsyncTask
+            extends AsyncTask<Void, Void, ExerciceDansHistorique> {
+        private GoMuscuDao dao;
+        private Integer id_historique;
+        private Integer id_exercice;
+
+        GetExerciceDansHistoriqueByIdAsyncTask(GoMuscuDao dao, Integer id_historique, Integer id_exercice) {
+            this.dao = dao;
+            this.id_historique = id_historique;
+            this.id_exercice = id_exercice;
+        }
+
+        @Override
+        protected ExerciceDansHistorique doInBackground(Void... voids) {
+            return this.dao.getExerciceDansHistoriqueById(this.id_historique, this.id_exercice);
+        }
+    }
+
 }

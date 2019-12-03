@@ -106,4 +106,8 @@ public class GoMuscuViewModel extends AndroidViewModel {
     public LiveData<Integer> getExerciceDansHistoriqueCount() {
         return goMuscuRepository.getExerciceDansHistoriqueCount();
     }
+
+    public ExerciceDansHistorique getExerciceDansHistoriqueById(int id_historique, int id_exercice) {
+        return goMuscuRepository.getExerciceDansHistoriqueById(id_historique, id_exercice);
+    }
 }
