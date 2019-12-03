@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.gomuscu.entity.ExerciceDansHistorique;
 import com.app.gomuscu.entity.ExerciceDansSeance;
 import com.app.gomuscu.entity.Historique;
+import com.app.gomuscu.entity.Journee;
 import com.app.gomuscu.entity.Repetition;
 import com.app.gomuscu.entity.Seance;
 
@@ -83,8 +84,10 @@ public class DemarrerSeance extends AppCompatActivity {
         // Cas fin de séance
         else {
             stopChronoGlobal();
-            //Insertions dans la base, fermeture activity, ouverture activity avec résumé
-            terminerSeance();
+            //Insertions dans la base
+            int id_historique = terminerSeance();
+            // fermeture de l'activity, lancement voirHistorique
+            voirHistorique(id_historique);
         }
     }
 
@@ -125,8 +128,9 @@ public class DemarrerSeance extends AppCompatActivity {
 
     /**
      * Insertion dans la base des données de la séance effectuée
+     * @return l'id de l'historique créé
      */
-    public void terminerSeance() {
+    public int terminerSeance() {
         Calendar cal = Calendar.getInstance();
         // Les dates insérées doivent impérativement être définies sans heure/minutes/...
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -157,6 +161,15 @@ public class DemarrerSeance extends AppCompatActivity {
                 viewModel.insertRepetition(repet);
             }
         }
+        // Suppression de la séance planifiée aujourd'hui
+        Journee journee = viewModel.getJourneeByDate(date);
+        viewModel.deleteJournee(journee);
+
+        return (int) id_historique;
+    }
+
+    public void voirHistorique(int id_historique) {
+        
     }
 
     /**

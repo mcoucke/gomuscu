@@ -190,6 +190,24 @@ public class GoMuscuRepository {
         }
     }
 
+    public void deleteJournee(Journee journee) {
+        new DeleteJourneeAsyncTask(this.dao).execute(journee);
+    }
+
+    public static class DeleteJourneeAsyncTask extends AsyncTask<Journee, Void, Void> {
+        private GoMuscuDao dao;
+
+        DeleteJourneeAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Journee... journees) {
+            dao.deleteJournees(journees);
+            return null;
+        }
+    }
+
     public LiveData<List<Exercice>> getAllExercices() {
         LiveData<List<Exercice>> liste = null;
         try {

@@ -25,12 +25,6 @@ public interface GoMuscuDao {
     @Insert
     public long[] insertExercices(Exercice... exercices);
 
-//    @Update
-//    public void updateExercices(Exercice... exercices);
-//
-//    @Delete
-//    public void deleteExercices(Exercice... exercices);
-
     @Insert
     public long[] insertSeances(Seance... seances);
 
@@ -51,6 +45,9 @@ public interface GoMuscuDao {
 
 //    @Delete
 //    public void deleteExercicesDansSeances(ExerciceDansSeance... exercicesDansSeances);
+
+    @Delete
+    public void deleteJournees(Journee... journees);
 
     @Query("SELECT * FROM Exercice")
     public LiveData<List<Exercice>> getAllExercices();

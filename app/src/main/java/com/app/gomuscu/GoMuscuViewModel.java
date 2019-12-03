@@ -54,6 +54,11 @@ public class GoMuscuViewModel extends AndroidViewModel {
         return this.goMuscuRepository.insertRepetition(repetition);
     }
 
+    public Void deleteJournee(Journee journee) {
+        this.goMuscuRepository.deleteJournee(journee);
+        return null;
+    }
+
     public LiveData<List<Exercice>> getAllExercices() {
         return goMuscuRepository.getAllExercices();
     }
