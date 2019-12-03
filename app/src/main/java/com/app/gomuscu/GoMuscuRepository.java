@@ -11,9 +11,9 @@ import com.app.gomuscu.entity.ExerciceDansHistorique;
 import com.app.gomuscu.entity.ExerciceDansSeance;
 import com.app.gomuscu.entity.Historique;
 import com.app.gomuscu.entity.Journee;
+import com.app.gomuscu.entity.Repetition;
 import com.app.gomuscu.entity.Seance;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -97,6 +97,30 @@ public class GoMuscuRepository {
         }
     }
 
+    public long insertExerciceDansHistorique(ExerciceDansHistorique exerciceDansHistorique) {
+        Long id = null;
+        try {
+            id = new InsertExerciceDansHistoriqueAsyncTask(this.dao).execute(exerciceDansHistorique).get()[0];
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "insertExerciceDansSeance : " + e.getMessage());
+        }
+        return id;
+    }
+
+    private static class InsertExerciceDansHistoriqueAsyncTask
+            extends AsyncTask<ExerciceDansHistorique, Void, long[]> {
+        private GoMuscuDao dao;
+
+        InsertExerciceDansHistoriqueAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected long[] doInBackground(ExerciceDansHistorique... exerciceDansHistoriques) {
+            return this.dao.insertExercicesDansHistoriques(exerciceDansHistoriques);
+        }
+    }
+
     public long insertJournee(Journee journee) {
         Long id = null;
         try {
@@ -117,6 +141,52 @@ public class GoMuscuRepository {
         @Override
         protected long[] doInBackground(Journee... journees) {
             return this.dao.insertJournees(journees);
+        }
+    }
+
+    public long insertHistorique(Historique historique) {
+        Long id = null;
+        try {
+            id = new InsertHistoriqueAsyncTask(this.dao).execute(historique).get()[0];
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "insertHistorique : " + e.getMessage());
+        }
+        return id;
+    }
+
+    private static class InsertHistoriqueAsyncTask extends AsyncTask<Historique, Void, long[]> {
+        private GoMuscuDao dao;
+
+        InsertHistoriqueAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected long[] doInBackground(Historique... historique) {
+            return this.dao.insertHistoriques(historique);
+        }
+    }
+
+    public long insertRepetition(Repetition repetition) {
+        Long id = null;
+        try {
+            id = new InsertRepetitionAsyncTask(this.dao).execute(repetition).get()[0];
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "insertRepetition : " + e.getMessage());
+        }
+        return id;
+    }
+
+    private static class InsertRepetitionAsyncTask extends AsyncTask<Repetition, Void, long[]> {
+        private GoMuscuDao dao;
+
+        InsertRepetitionAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected long[] doInBackground(Repetition... repetition) {
+            return this.dao.insertRepetitions(repetition);
         }
     }
 
@@ -260,6 +330,29 @@ public class GoMuscuRepository {
         @Override
         protected Exercice doInBackground(String... strings) {
             return this.dao.getExerciceByNom(strings);
+        }
+    }
+
+    public Exercice getExerciceById(int id) {
+        Exercice exercice = null;
+        try {
+            exercice = new GetExerciceByIdAsyncTask(this.dao).execute(id).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getExerciceById : " + e.getMessage());
+        }
+        return exercice;
+    }
+
+    private static class GetExerciceByIdAsyncTask extends AsyncTask<Integer, Void, Exercice> {
+        private GoMuscuDao dao;
+
+        GetExerciceByIdAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Exercice doInBackground(Integer... integers) {
+            return this.dao.getExerciceById(integers);
         }
     }
 

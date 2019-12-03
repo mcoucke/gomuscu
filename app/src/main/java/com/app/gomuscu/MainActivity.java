@@ -61,6 +61,20 @@ public class MainActivity extends AppCompatActivity {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
         Date dateFor = cal.getTime();
+
+
+        if(goMuscuViewModel.getSeanceById(1) == null) {
+            Seance s = new Seance("Test");
+            goMuscuViewModel.insertSeance(s);
+            for(int i = 1; i < 7; i++) {
+                ExerciceDansSeance ex = new ExerciceDansSeance(s.getId(), i);
+                goMuscuViewModel.insertExerciceDansSeance(ex);
+            }
+            Journee j = new Journee(dateFor, s.getId());
+            goMuscuViewModel.insertJournee(j);
+        }
+
+
         // Insert dans listeJournees les objets Journee correspondants à aujourd'hui
         // et aux 3 prochains jours (null si pas de Journee), définition des dates du planning
         String dateAffichee;
@@ -161,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCLickDemarrerSeance(View view) {
         Intent intent = new Intent(this, DemarrerSeance.class);
+        // On passe l'id de la séance du jour à l'activity
+        if(this.listeJournees.get(0) != null) {
+            intent.putExtra("id_seance", this.listeJournees.get(0).getIdSeance());
+        }
         startActivity(intent);
     }
 
