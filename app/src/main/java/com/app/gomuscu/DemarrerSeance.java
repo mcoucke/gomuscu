@@ -49,6 +49,9 @@ public class DemarrerSeance extends AppCompatActivity {
 
         int id_seance = mIntent.getIntExtra("id_seance", 0);
         this.seance = this.viewModel.getSeanceById(id_seance);
+        if (this.seance == null) {
+            finish();
+        }
 
         this.recyclerView = findViewById(R.id.rvListeExos);
 
@@ -155,9 +158,15 @@ public class DemarrerSeance extends AppCompatActivity {
                 View view = viewHolder.itemView;
                 EditText etNbRep = (EditText) view.findViewById(R.id.etNbRepListeExercices);
                 EditText etPoids = (EditText) view.findViewById(R.id.etPoidsListeExercices);
-                Repetition repet = new Repetition(Integer.valueOf(etNbRep.getText().toString()),
-                        Integer.valueOf(etPoids.getText().toString()),
-                        dureeSecondes, (int) id_exoDansSeance);
+                int nbRep = -1;
+                int poids = -1;
+                if(etNbRep.getText().toString().length() > 0) {
+                    nbRep = Integer.valueOf(etNbRep.getText().toString());
+                }
+                if(etPoids.getText().toString().length() > 0) {
+                    poids = Integer.valueOf(etPoids.getText().toString());
+                }
+                Repetition repet = new Repetition(nbRep, poids, -1, (int) id_exoDansSeance);
                 viewModel.insertRepetition(repet);
             }
         }
@@ -169,7 +178,7 @@ public class DemarrerSeance extends AppCompatActivity {
     }
 
     public void voirHistorique(int id_historique) {
-        
+
     }
 
     /**

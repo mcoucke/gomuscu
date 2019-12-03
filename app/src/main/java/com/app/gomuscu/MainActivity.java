@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     public final int NB_JOURS = 4;
 
     private List<Journee> listeJournees = new ArrayList<>();
+    private List<ImageView> listeImages = new ArrayList<>();
+    private List<TextView> listeTextes = new ArrayList<>();
+    private GoMuscuViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +40,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Liste d'ImageView permettant d'accéder à l'image correspondant a un indice donné
-        List<ImageView> listeImages = new ArrayList<>();
-        listeImages.add((ImageView)findViewById(R.id.img_day1));
-        listeImages.add((ImageView)findViewById(R.id.img_day2));
-        listeImages.add((ImageView)findViewById(R.id.img_day3));
-        listeImages.add((ImageView)findViewById(R.id.img_day4));
+        this.listeImages.add((ImageView)findViewById(R.id.img_day1));
+        this.listeImages.add((ImageView)findViewById(R.id.img_day2));
+        this.listeImages.add((ImageView)findViewById(R.id.img_day3));
+        this.listeImages.add((ImageView)findViewById(R.id.img_day4));
 
         //Liste de TextView permettant de définir la date de chaque jour
-        List<TextView> listeTextes = new ArrayList<>();
-        listeTextes.add((TextView)findViewById(R.id.text_jour1));
-        listeTextes.add((TextView)findViewById(R.id.text_jour2));
-        listeTextes.add((TextView)findViewById(R.id.text_jour3));
-        listeTextes.add((TextView)findViewById(R.id.text_jour4));
+        this.listeTextes.add((TextView)findViewById(R.id.text_jour1));
+        this.listeTextes.add((TextView)findViewById(R.id.text_jour2));
+        this.listeTextes.add((TextView)findViewById(R.id.text_jour3));
+        this.listeTextes.add((TextView)findViewById(R.id.text_jour4));
 
         // Récupération du ViewModel pour interroger la base
-        GoMuscuViewModel goMuscuViewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
+        this.viewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
-        // Remplissage du planning avec séances si existantes
+        /**
+         * SAMPLE
+         */
         Calendar cal = Calendar.getInstance();
         // Les dates insérées doivent impérativement être définies sans heure/minutes/...
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -62,19 +65,58 @@ public class MainActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, 0);
         Date dateFor = cal.getTime();
 
-
-        if(goMuscuViewModel.getSeanceById(1) == null) {
+        if(this.viewModel.getSeanceById(1) == null) {
             Seance s = new Seance("Test");
-            goMuscuViewModel.insertSeance(s);
+            long id_seance = this.viewModel.insertSeance(s);
             for(int i = 1; i < 7; i++) {
-                ExerciceDansSeance ex = new ExerciceDansSeance(s.getId(), i);
-                goMuscuViewModel.insertExerciceDansSeance(ex);
+                ExerciceDansSeance ex = new ExerciceDansSeance((int) id_seance, i);
+                this.viewModel.insertExerciceDansSeance(ex);
             }
-            Journee j = new Journee(dateFor, s.getId());
-            goMuscuViewModel.insertJournee(j);
+            Journee j = new Journee(dateFor, (int) id_seance);
+            this.viewModel.insertJournee(j);
         }
+        /**
+         * END SAMPLE
+         */
+
+        // Statistiques
+
+        this.viewModel.getAllHistoriques().observe(this, new Observer<List<Historique>>() {
+            @Override
+            public void onChanged(List<Historique> historiques) {
+                setStatistiquesHistoriques(historiques);
+            }
+        });
+
+        this.viewModel.getExerciceDansHistoriqueCount().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer nbExercices) {
+                TextView tv_total_exos = (TextView) findViewById(R.id.tv_total_exos);
+                tv_total_exos.setText(String.valueOf(nbExercices));
+            }
+        });
+
+    }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        buildPlanning();
+    }
+
+    /**
+     * Génère le planning à partir de la base de données
+     */
+    public void buildPlanning() {
+        Calendar cal = Calendar.getInstance();
+        // Les dates insérées doivent impérativement être définies sans heure/minutes/...
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        Date dateFor = cal.getTime();
+        this.listeJournees = new ArrayList<>();
         // Insert dans listeJournees les objets Journee correspondants à aujourd'hui
         // et aux 3 prochains jours (null si pas de Journee), définition des dates du planning
         String dateAffichee;
@@ -89,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             dateAffichee += new SimpleDateFormat("dd/MM").format(dateFor.getTime());
             listeTextes.get(i).setText(dateAffichee);
             // On insère la journée dans la liste
-            this.listeJournees.add(goMuscuViewModel.getJourneeByDate(dateFor));
+            this.listeJournees.add(this.viewModel.getJourneeByDate(dateFor));
             // Date suivante
             cal.add(Calendar.DAY_OF_YEAR, 1);
             dateFor = cal.getTime();
@@ -113,24 +155,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             boutonLancerSeance.setEnabled(false);
         }
-
-        // Statistiques
-
-        goMuscuViewModel.getAllHistoriques().observe(this, new Observer<List<Historique>>() {
-            @Override
-            public void onChanged(List<Historique> historiques) {
-                setStatistiquesHistoriques(historiques);
-            }
-        });
-
-        goMuscuViewModel.getExerciceDansHistoriqueCount().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer nbExercices) {
-                TextView tv_total_exos = (TextView) findViewById(R.id.tv_total_exos);
-                tv_total_exos.setText(String.valueOf(nbExercices));
-            }
-        });
-
     }
 
     public void onClickImage(View view) {
