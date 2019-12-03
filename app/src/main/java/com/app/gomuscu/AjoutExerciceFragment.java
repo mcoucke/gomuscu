@@ -20,6 +20,12 @@ import java.util.List;
 public class AjoutExerciceFragment extends Fragment {
 
     private View view;
+    private int selected = 0;
+
+    public AjoutExerciceFragment(){}
+    public AjoutExerciceFragment(int selected){
+        this.selected = selected;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,8 @@ public class AjoutExerciceFragment extends Fragment {
 
         Spinner spinner = view.findViewById(R.id.spinner);
         spinner.setAdapter(dataAdapter);
+
+        spinner.setSelection(selected);
     }
 
     public int getIdExerciceSelected(){
