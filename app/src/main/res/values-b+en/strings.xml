@@ -17,5 +17,6 @@
     <string name="hint_nouvelle_seance">New seance name</string>
     <string name="tv_nom_exo">Exercice name :</string>
     <string name="btn_ajout_exo">Add exercice</string>
-
+    <string name="btn_supprimer">Delete</string>
+    <string name="btn_modifier">Edit</string>
 </resources>
