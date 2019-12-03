@@ -434,6 +434,29 @@ public class GoMuscuRepository {
         }
     }
 
+    public Historique getHistoriqueById(int id) {
+        Historique historique = null;
+        try {
+            historique = new GetHistoriqueByIdAsyncTask(this.dao).execute(id).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getHistoriqueById : " + e.getMessage());
+        }
+        return historique;
+    }
+
+    private static class GetHistoriqueByIdAsyncTask extends AsyncTask<Integer, Void, Historique> {
+        private GoMuscuDao dao;
+
+        GetHistoriqueByIdAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Historique doInBackground(Integer... integers) {
+            return this.dao.getHistoriqueById(integers);
+        }
+    }
+
     public Journee getJourneeByDate(Date date) {
         Journee journee = null;
         try {
@@ -529,6 +552,60 @@ public class GoMuscuRepository {
         }
     }
 
+    public ExerciceDansHistorique getExerciceDansHistoriqueById(Integer id_historique, Integer id_exercice) {
+        ExerciceDansHistorique exerciceDansHistorique = null;
+        try {
+            exerciceDansHistorique = new GetExerciceDansHistoriqueByIdAsyncTask(
+                    this.dao, id_historique, id_exercice).execute().get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getExerciceDansHistoriqueById : " + e.getMessage());
+        }
+
+        return exerciceDansHistorique;
+    }
+
+    private static class GetExerciceDansHistoriqueByIdAsyncTask
+            extends AsyncTask<Void, Void, ExerciceDansHistorique> {
+        private GoMuscuDao dao;
+        private Integer id_historique;
+        private Integer id_exercice;
+
+        GetExerciceDansHistoriqueByIdAsyncTask(GoMuscuDao dao, Integer id_historique, Integer id_exercice) {
+            this.dao = dao;
+            this.id_historique = id_historique;
+            this.id_exercice = id_exercice;
+        }
+
+        @Override
+        protected ExerciceDansHistorique doInBackground(Void... voids) {
+            return this.dao.getExerciceDansHistoriqueById(this.id_historique, this.id_exercice);
+        }
+    }
+
+    public Repetition getRepetitionByIdExercice(int id) {
+        Repetition repetition = null;
+        try {
+            repetition = new GetRepetitionByIdExerciceAsyncTask(this.dao).execute(id).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getRepetitionByIdExercice : " + e.getMessage());
+        }
+        return repetition;
+    }
+
+    private static class GetRepetitionByIdExerciceAsyncTask
+            extends AsyncTask<Integer, Void, Repetition> {
+        private GoMuscuDao dao;
+
+        GetRepetitionByIdExerciceAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Repetition doInBackground(Integer... integers) {
+            return this.dao.getRepetitionByIdExercice(integers);
+        }
+    }
+
     public Seance getSeanceByNom(String nom) {
         Seance seance = null;
         try {
@@ -539,7 +616,8 @@ public class GoMuscuRepository {
         return seance;
     }
 
-    private static class GetSeanceByNomAsyncTask extends AsyncTask<String, Void, Seance> {
+    private static class GetSeanceByNomAsyncTask 
+            extends AsyncTask<String, Void, Seance> {
         private GoMuscuDao dao;
 
         GetSeanceByNomAsyncTask(GoMuscuDao dao) {

@@ -14,6 +14,7 @@
         <activity android:name=".EditerSeance" />
         <activity android:name=".EditerPlanning" />
         <activity android:name=".DemarrerSeance" android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".BilanSeance" android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
