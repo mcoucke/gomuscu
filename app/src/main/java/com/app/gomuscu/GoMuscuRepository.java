@@ -190,6 +190,42 @@ public class GoMuscuRepository {
         }
     }
 
+    public void deleteAllExercicesDansSeanceById(Integer id_seance) {
+        new DeleteAllExercicesDansSeanceByIdAsyncTask(this.dao).execute(id_seance);
+    }
+
+    private static class DeleteAllExercicesDansSeanceByIdAsyncTask
+            extends AsyncTask<Integer, Void, Void> {
+        private GoMuscuDao dao;
+
+        DeleteAllExercicesDansSeanceByIdAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            return this.dao.deleteAllExercicesDansSeanceById(integers);
+        }
+    }
+
+    public void deleteSeance(Seance seance) {
+        new DeleteSeanceAsyncTask(this.dao).execute(seance);
+    }
+
+    public static class DeleteSeanceAsyncTask extends AsyncTask<Seance, Void, Void> {
+        private GoMuscuDao dao;
+
+        DeleteSeanceAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Seance... seances) {
+            dao.deleteSeances(seances);
+            return null;
+        }
+    }
+
     public void deleteJournee(Journee journee) {
         new DeleteJourneeAsyncTask(this.dao).execute(journee);
     }
@@ -489,6 +525,29 @@ public class GoMuscuRepository {
         @Override
         protected LiveData<Integer> doInBackground(Void... voids) {
             return this.dao.getExerciceDansHistoriqueCount();
+        }
+    }
+
+    public Seance getSeanceByNom(String nom) {
+        Seance seance = null;
+        try {
+            seance = new GetSeanceByNomAsyncTask(this.dao).execute(nom).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d("erreurs", "getSeanceByNom : " + e.getMessage());
+        }
+        return seance;
+    }
+
+    private static class GetSeanceByNomAsyncTask extends AsyncTask<String, Void, Seance> {
+        private GoMuscuDao dao;
+
+        GetSeanceByNomAsyncTask(GoMuscuDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Seance doInBackground(String... strings) {
+            return this.dao.getSeanceByNom(strings);
         }
     }
 

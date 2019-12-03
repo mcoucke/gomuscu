@@ -43,8 +43,11 @@ public interface GoMuscuDao {
     @Insert
     public long[] insertRepetitions(Repetition... repetitions);
 
-//    @Delete
-//    public void deleteExercicesDansSeances(ExerciceDansSeance... exercicesDansSeances);
+    @Query("DELETE FROM ExerciceDansSeance WHERE idSeance = :idSeance")
+    public Void deleteAllExercicesDansSeanceById(Integer... idSeance);
+
+    @Delete
+    public void deleteSeances(Seance... seances);
 
     @Delete
     public void deleteJournees(Journee... journees);
@@ -84,5 +87,8 @@ public interface GoMuscuDao {
 
     @Query("SELECT COUNT(*) FROM ExerciceDansHistorique")
     public LiveData<Integer> getExerciceDansHistoriqueCount();
+
+    @Query("SELECT * FROM Seance WHERE nom LIKE :nom")
+    public Seance getSeanceByNom(String... nom);
 
 }

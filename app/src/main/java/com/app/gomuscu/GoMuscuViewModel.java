@@ -54,6 +54,16 @@ public class GoMuscuViewModel extends AndroidViewModel {
         return this.goMuscuRepository.insertRepetition(repetition);
     }
 
+    public Void deleteAllExercicesDansSeanceById(int id_seance) {
+        this.goMuscuRepository.deleteAllExercicesDansSeanceById(id_seance);
+        return null;
+    }
+
+    public Void deleteSeance(Seance seance) {
+        this.goMuscuRepository.deleteSeance(seance);
+        return null;
+    }
+
     public Void deleteJournee(Journee journee) {
         this.goMuscuRepository.deleteJournee(journee);
         return null;
@@ -105,5 +115,9 @@ public class GoMuscuViewModel extends AndroidViewModel {
 
     public LiveData<Integer> getExerciceDansHistoriqueCount() {
         return goMuscuRepository.getExerciceDansHistoriqueCount();
+    }
+
+    public Seance getSeanceByNom(String nom) {
+        return goMuscuRepository.getSeanceByNom(nom);
     }
 }
