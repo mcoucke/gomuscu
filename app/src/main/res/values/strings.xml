@@ -17,4 +17,15 @@
     <string name="hint_nouvelle_seance">Intitulé nouvelle séance</string>
     <string name="tv_nom_exo">Nom exercice :</string>
     <string name="btn_ajout_exo">Ajouter un exercice</string>
+    <string name="btn_demarrer_seance">Démarrer la séance du jour</string>
+    <string name="hint_nb_reps">Nb répet</string>
+    <string name="hint_poids">Poids</string>
+    <string name="btn_valider">OK</string>
+    <string name="seance_btn_demarrer">Démarrer</string>
+    <string name="seance_btn_repos">Repos</string>
+    <string name="seance_btn_reprise">Reprise</string>
+    <string name="seance_btn_fin">Terminer</string>
+    <string name="seance_duree_totale">Durée totale</string>
+    <string name="seance_duree_repos">Durée repos</string>
+
 </resources>

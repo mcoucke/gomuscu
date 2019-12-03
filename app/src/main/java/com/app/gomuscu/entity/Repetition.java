@@ -18,10 +18,11 @@ public class Repetition {
             childColumns = "idExerciceDansHistorique")
     private int idExerciceDansHistorique;
 
-    public Repetition(float poids, int nombre, int dureeSecondes) {
+    public Repetition(float poids, int nombre, int dureeSecondes, int idExerciceDansHistorique) {
         this.poids  = poids;
         this.nombre = nombre;
         this.dureeSecondes = dureeSecondes;
+        this.idExerciceDansHistorique = idExerciceDansHistorique;
     }
 
     public int getId() {

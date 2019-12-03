@@ -14,8 +14,18 @@
     <string name="btn_retour_menu">Back to menu</string>
     <string name="btn_annuler">Cancel</string>
     <string name="btn_sauvegarder">Save</string>
-    <string name="hint_nouvelle_seance">New seance name</string>
+    <string name="hint_nouvelle_seance">New session name</string>
     <string name="tv_nom_exo">Exercice name :</string>
     <string name="btn_ajout_exo">Add exercice</string>
+    <string name="btn_demarrer_seance">Start session of the day</string>
+    <string name="hint_nb_reps">Rep count</string>
+    <string name="hint_poids">Weight</string>
+    <string name="btn_valider">OK</string>
+    <string name="seance_btn_demarrer">Begin</string>
+    <string name="seance_btn_repos">Rest</string>
+    <string name="seance_btn_reprise">Resume</string>
+    <string name="seance_btn_fin">End session</string>
+    <string name="seance_duree_totale">Total duration</string>
+    <string name="seance_duree_repos">Rest duration</string>
 
 </resources>

@@ -11,6 +11,7 @@ import com.app.gomuscu.entity.ExerciceDansHistorique;
 import com.app.gomuscu.entity.ExerciceDansSeance;
 import com.app.gomuscu.entity.Historique;
 import com.app.gomuscu.entity.Journee;
+import com.app.gomuscu.entity.Repetition;
 import com.app.gomuscu.entity.Seance;
 
 import java.util.Date;
@@ -37,8 +38,25 @@ public class GoMuscuViewModel extends AndroidViewModel {
         return this.goMuscuRepository.insertExerciceDansSeance(exerciceDansSeance);
     }
 
+    public Long insertExerciceDansHistorique(ExerciceDansHistorique exerciceDansHistorique) {
+        return this.goMuscuRepository.insertExerciceDansHistorique(exerciceDansHistorique);
+    }
+
     public Long insertJournee(Journee journee) {
         return this.goMuscuRepository.insertJournee(journee);
+    }
+
+    public Long insertHistorique(Historique historique) {
+        return this.goMuscuRepository.insertHistorique(historique);
+    }
+
+    public Long insertRepetition(Repetition repetition) {
+        return this.goMuscuRepository.insertRepetition(repetition);
+    }
+
+    public Void deleteJournee(Journee journee) {
+        this.goMuscuRepository.deleteJournee(journee);
+        return null;
     }
 
     public LiveData<List<Exercice>> getAllExercices() {
@@ -63,6 +81,10 @@ public class GoMuscuViewModel extends AndroidViewModel {
 
     public Exercice getExerciceByNom(String nom) {
         return goMuscuRepository.getExerciceByNom(nom);
+    }
+
+    public Exercice getExerciceById(int id) {
+        return goMuscuRepository.getExerciceById(id);
     }
 
     public Seance getSeanceById(int id) {
