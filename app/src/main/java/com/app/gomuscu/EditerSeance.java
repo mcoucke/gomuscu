@@ -1,6 +1,7 @@
 package com.app.gomuscu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -16,13 +17,17 @@ import com.app.gomuscu.entity.Seance;
 
 import java.util.List;
 
+
 public class EditerSeance extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editer_seance);
+        refreshListeSeance();
+    }
 
+    public void refreshListeSeance(){
         GoMuscuViewModel goMuscuViewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
         goMuscuViewModel.getAllSeances().observe(this,  new Observer<List<Seance>>() {
             @Override
@@ -30,16 +35,19 @@ public class EditerSeance extends AppCompatActivity {
                 fillListeSeances(seances);
             }
         });
-
-
     }
 
     public void fillListeSeances(List<Seance> seances){
 
+        System.out.println("Nombre de séances totales : " + seances.size());
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        System.out.println(seances.size());
+        for(Fragment fragment: fragmentManager.getFragments()){
+            fragmentTransaction.remove(fragment);
+        }
+
         for (int i = 0; i < seances.size(); i++){
             SeancesFragment seancesFragment = new SeancesFragment(seances.get(i));
             fragmentTransaction.add(R.id.lin_lay_seance, seancesFragment);
