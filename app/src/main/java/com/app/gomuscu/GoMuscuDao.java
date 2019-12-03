@@ -44,7 +44,7 @@ public interface GoMuscuDao {
     public long[] insertRepetitions(Repetition... repetitions);
 
     @Query("DELETE FROM ExerciceDansSeance WHERE idSeance = :idSeance")
-    public Void deleteAllExercicesDansSeanceById(Integer... idSeance);
+    public void deleteAllExercicesDansSeanceById(Integer... idSeance);
 
     @Delete
     public void deleteSeances(Seance... seances);

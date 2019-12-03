@@ -204,7 +204,8 @@ public class GoMuscuRepository {
 
         @Override
         protected Void doInBackground(Integer... integers) {
-            return this.dao.deleteAllExercicesDansSeanceById(integers);
+            this.dao.deleteAllExercicesDansSeanceById(integers);
+            return null;
         }
     }
 
