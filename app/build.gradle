@@ -60,4 +60,7 @@ dependencies {
 
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+    // Android image popup
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
 }
