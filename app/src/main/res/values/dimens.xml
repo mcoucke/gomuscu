@@ -11,6 +11,10 @@
     <dimen name="days_text_width">58dp</dimen>
     <dimen name="work_img_width">50dp</dimen>
 
+    <!--    SEANCE    -->
+    <dimen name="img_exercice_width">30dp</dimen>
+    <dimen name="img_exercice_height">30dp</dimen>
+
     <!--    STATS    -->
     <dimen name="stats_number">30dp</dimen>
 </resources>

@@ -1,6 +1,8 @@
 package com.app.gomuscu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -10,11 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.gomuscu.entity.Exercice;
 import com.app.gomuscu.entity.ExerciceDansHistorique;
 import com.app.gomuscu.entity.ExerciceDansSeance;
 import com.app.gomuscu.entity.Historique;
@@ -28,6 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DemarrerSeance extends AppCompatActivity {
+    private static Context context;
     private GoMuscuViewModel viewModel;
     private Seance seance;
     private List<ExerciceDansSeance> exerciceDansSeanceList;
@@ -42,6 +47,8 @@ public class DemarrerSeance extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demarrer_seance);
+
+        DemarrerSeance.context = getApplicationContext();
 
         Intent mIntent = getIntent();
         int id_seance = mIntent.getIntExtra("id_seance", 0);
@@ -235,6 +242,15 @@ public class DemarrerSeance extends AppCompatActivity {
 
     public void stopChronoRepos() {
         ((Chronometer) findViewById(R.id.chronoRepos)).stop();
+    }
+
+    /**
+     * Retourne le context de l'application
+     * @return Context de l'application
+     */
+    public static Context getContext()
+    {
+        return DemarrerSeance.context;
     }
 
 }

@@ -44,6 +44,13 @@
             android:enabled="false"
             android:id="@+id/etPoidsListeExercices" />
 
+        <ImageView
+            android:layout_width="@dimen/img_exercice_width"
+            android:layout_height="@dimen/img_exercice_height"
+            android:id="@+id/img_exercice" />
+
+
+
     </LinearLayout>
 
 

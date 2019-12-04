@@ -3,6 +3,7 @@ package com.app.gomuscu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,6 +64,7 @@ public class ExerciceDansHistoriqueAdapter extends RecyclerView.Adapter<Exercice
         TextView tvNomExercice;
         TextView tvNbRep;
         TextView tvPoids;
+        ImageView img;
 
         public ViewHolder(View view) {
             super(view);
