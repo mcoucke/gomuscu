@@ -16,7 +16,9 @@ a des statistiques correspondant à son historique, et un fil d'actualités où 
 		L'utilisateur voit ses séances planifiées et peut en ajouter de nouvelles. (Il pourra par la suite en supprimer)
 	
 	Éditer les séances :
-
+		La vue éditer séance affiche la liste de toutes les séances enregistrées. L'utilisateur à la possibilité de créer 
+une séance en choisissant des exercices à effectuer parmis une liste prédéfinie ainsi que le nom de la séance. Pour chaque séance 
+affichée dans la vue, l'utilisateur a la possibilité d'en modifier le contenu ou de supprimer la séance.
 
 	Historique des séances :
 		L'utilisateur peut voir toutes les séances qu'il a effectué ainsi que les détails de ces séances en cliquant dessus.
