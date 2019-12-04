@@ -1,6 +1,8 @@
 package com.app.gomuscu;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +51,10 @@ public class EditerPlanning extends AppCompatActivity {
 
     }
 
-
+    public void onClickCreerJournee(View view) {
+        Intent intent = new Intent(this, CreerJournee.class);
+        startActivity(intent);
+    }
 
 
 }

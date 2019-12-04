@@ -29,5 +29,7 @@
     <string name="seance_btn_fin">Terminer</string>
     <string name="seance_duree_totale">Durée totale</string>
     <string name="seance_duree_repos">Durée repos</string>
+    <string name="creer_journee">Planifier une séance</string>
+    <string name="tv_editer_planning">Editer le planning</string>
 
 </resources>
