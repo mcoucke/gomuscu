@@ -33,6 +33,7 @@ public class BilanSeance extends AppCompatActivity {
 
         this.viewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
+        // Si erreur lors du passage de l'id_historique on ferme la vue
         this.historique = this.viewModel.getHistoriqueById(id_historique);
         if (this.historique == null) {
             finish();
@@ -53,6 +54,7 @@ public class BilanSeance extends AppCompatActivity {
             }
         });
 
+        // Calcul des données depuis la base de données vers la vue
         int duree_minutes = this.historique.getDureeSecondes() / 60;
         String str_minutes = Integer.toString(duree_minutes);
         if (duree_minutes < 10) {

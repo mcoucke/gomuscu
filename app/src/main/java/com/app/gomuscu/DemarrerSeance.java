@@ -50,11 +50,13 @@ public class DemarrerSeance extends AppCompatActivity {
 
         DemarrerSeance.context = getApplicationContext();
 
+        // Récupération de l'id de la séance correspondante
         Intent mIntent = getIntent();
         int id_seance = mIntent.getIntExtra("id_seance", 0);
 
         this.viewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
 
+        // Si erreur lors de la récupération de l'id_seance, on ferme la vue
         this.seance = this.viewModel.getSeanceById(id_seance);
         if (this.seance == null) {
             finish();
@@ -67,6 +69,7 @@ public class DemarrerSeance extends AppCompatActivity {
                 new ExerciceDansSeanceAdapter(new ArrayList<ExerciceDansSeance>(), viewModel);
         this.recyclerView.setAdapter(exerciceDansSeanceAdapter);
 
+        // On récupère tous les exercices correspondant à l'id de la séance donné
         this.viewModel.getAllExercicesDansSeancesById(this.seance.getId()).observe(this, new Observer<List<ExerciceDansSeance>>() {
             @Override
             public void onChanged(List<ExerciceDansSeance> exerciceDansSeances) {

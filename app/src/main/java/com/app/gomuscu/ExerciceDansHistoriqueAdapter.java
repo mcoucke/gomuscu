@@ -38,9 +38,11 @@ public class ExerciceDansHistoriqueAdapter extends RecyclerView.Adapter<Exercice
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        // Récupération de l'exercice correspondant à la position
         ExerciceDansHistorique exerciceDansHistorique = viewModel.getExerciceDansHistoriqueById(
                 this.id_historique, this.data.get(position).getIdExercice());
         Exercice exercice = viewModel.getExerciceById(exerciceDansHistorique.getIdExercice());
+        // Insertion des valeurs dans la vue
         holder.tvNomExercice.setText(exercice.getNom());
         Repetition repetition = viewModel.getRepetitionByIdExercice(exerciceDansHistorique.getId());
         String textNbRep = "/";

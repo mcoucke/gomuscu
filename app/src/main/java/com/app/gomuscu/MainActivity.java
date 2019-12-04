@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         Date dateFor = cal.getTime();
 
         if(this.viewModel.getSeanceById(1) == null) {
-            Seance s = new Seance("Test");
+            Seance s = new Seance("SeanceTest");
             long id_seance = this.viewModel.insertSeance(s);
             for(int i = 1; i < 7; i++) {
                 ExerciceDansSeance ex = new ExerciceDansSeance((int) id_seance, i);
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         this.newsAdapter = new NewsAdapter(new ArrayList<News>(), this.viewModel);
         recyclerView.setAdapter(this.newsAdapter);
 
+        // Appel à l'API pour récupérer les news
         URL url = createURL();
         new GetNewsTask().execute(url);
     }
@@ -202,6 +203,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Génère les stastiques en les calculant à partir des historiques des séances
+     * @param historiques
+     */
     public void setStatistiquesHistoriques(List<Historique> historiques) {
         int total_duree_sec = 0;
         for(int i = 0; i < historiques.size(); i++) {
@@ -223,6 +228,10 @@ public class MainActivity extends AppCompatActivity {
         tv_duree_moyenne.setText(duree_min_moy + "min");
     }
 
+    /**
+     * Créé une url d'accès à l'API de news
+     * @return URL
+     */
     private URL createURL() {
         String baseUrl = getString(R.string.baseUrl);
         String apiKey = getString(R.string.apiKey);
@@ -243,7 +252,9 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    // Récupération des données
+    /**
+     * Récupère les données de l'api à partir de l'url créée
+     */
     private class GetNewsTask extends AsyncTask<URL, Void, JSONObject> {
 
         @Override
@@ -310,6 +321,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Parse le JSONObject envoyé par l'API en liste de news
+     * @param jsonObject
+     * @return liste de news
+     */
     private List<News> getNewsFromJSON(JSONObject jsonObject) {
         try {
             List<News> listeNews = new ArrayList<>();
@@ -336,6 +352,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Met à jour la liste de news dans le recyclerView
+     * @param newsList
+     */
     private void sendNewsToView(List<News> newsList) {
         this.newsAdapter.setData(newsList);
     }

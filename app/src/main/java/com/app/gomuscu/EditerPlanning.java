@@ -34,6 +34,7 @@ public class EditerPlanning extends AppCompatActivity {
         final JourneeAdapter journeeAdapter = new JourneeAdapter(new ArrayList<Journee>(), viewModel);
         recyclerView.setAdapter(journeeAdapter);
 
+        // Les dates sauvegardées ont toujours l'heure définie à 0
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);

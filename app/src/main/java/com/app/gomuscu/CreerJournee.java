@@ -31,6 +31,7 @@ public class CreerJournee extends AppCompatActivity {
         setContentView(R.layout.creer_journee);
 
         GoMuscuViewModel goMuscuViewModel = ViewModelProviders.of(this).get(GoMuscuViewModel.class);
+        // On récupère toute les séances que l'on envoie à la vue
         goMuscuViewModel.getAllSeances().observe(this, new Observer<List<Seance>>() {
             @Override
             public void onChanged(List<Seance> seances) {
