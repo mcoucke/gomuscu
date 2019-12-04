@@ -1,5 +1,6 @@
 package com.app.gomuscu.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -32,4 +33,9 @@ public class Seance {
         this.nom = nom;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return this.nom;
+    }
 }

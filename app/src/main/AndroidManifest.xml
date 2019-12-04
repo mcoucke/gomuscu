@@ -8,13 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CreerJournee"></activity>
         <activity android:name=".AjoutExerciceFragment" />
         <activity android:name=".SeancesFragment" />
         <activity android:name=".CreerSeance" />
         <activity android:name=".EditerSeance" />
         <activity android:name=".EditerPlanning" />
-        <activity android:name=".DemarrerSeance" android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".BilanSeance" android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".DemarrerSeance"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".BilanSeance"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
