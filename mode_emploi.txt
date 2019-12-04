@@ -1,0 +1,34 @@
+Description de l'application :
+	L'application GoMuscu a été créée dans le but d'aider les personnes faisant de la musculation. L'idée est de permettre
+a des utilisateurs de pouvoir créer leurs séances avec leurs exercices, de les plafinier et d'avoir un suivi à travers un historique.
+	En utilisant l'application, l'utilisateur peut entrer ses données (poids, nombre de répétitions) par exercices et ainsi suivre
+sa progression au fil du temps. Il a aussi accès à un petit fil de news concernant le monde du sport.
+
+Utilisation :
+
+	Écran d'accueil :
+		Arrivant sur l'accueil, l'utilisateur peut voir sur les 4 prochains jour si il a une séance de prévue à travers l'image 
+maison ou haltère (repos ou travail). Il peut aussi éditer ce planning, éditer les séances existantes (en ajouter et en supprimer), et 
+voir tout son historique de séances. Si l'utilisateur a une séance de prévue aujourd'hui, il peut démarrer cette séance. Il a aussi accès 
+a des statistiques correspondant à son historique, et un fil d'actualités où il peut directement accéder aux articles.
+
+	Éditer le planning :
+		L'utilisateur voit ses séances planifiées et peut en ajouter de nouvelles. (Il pourra par la suite en supprimer)
+	
+	Éditer les séances :
+
+
+	Historique des séances :
+		L'utilisateur peut voir toutes les séances qu'il a effectué ainsi que les détails de ces séances en cliquant dessus.
+
+	Démarrer la séance du jour :
+		En démarrant la séance du jour, l'utilisateur effectue sa séance. Il démarre un chronomètre et commence le premier 
+exercice. Il peut ainsi saisir dans cet exercice le poids qu'il a choisi ainsi que le nombre de répétitions qu'il a fait. Après avoir
+fait cet exercice, il passe en repos, puis il reprend en cliquant a nouveau sur le bouton repos. Il passe ainsi à l'exercice suivant.
+Chaque repos possède un chronomètre qui se réinitialise à chaque fois, permettant à l'utilisateur de chronométrer chaque repos 
+séparément. Il a aussi un chronomètre global qui sera sauvegardé. A la fin de la séance, l'utilisateur peut consulter le résumé de 
+cette séance.
+
+Autre :
+	Nous avons laissé du code entre commentaires "SAMPLE" pour permettre de tester l'application, une séance est planifiée à
+aujourd'hui ce qui permet de lancer la séance du jour.
