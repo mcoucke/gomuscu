@@ -25,6 +25,7 @@ Ce qui n'a pas été fait (qui sera fait par la suite):
 	- Certaines fonctionnalités ne sont pas présentes (supprimer une séance planifiée par ex)
 	- Gros manque d'ergonomie, l'application n'est pas intuitive.
 	- Remplacer le poids par une durée pour certains exercices (ex : gainage)
+	- Les images créées spécialement pour chaque exercice (soucis au niveau des performances de l'app)
 
 Nous avions prévu initialement plus de fonctionnalités et de contenu dans l'application car nous espérions par la suite 
 publier cette application sur le store. Nous nous sommes rendu compte que trop tard que nous avions été trop ambitieux. 
