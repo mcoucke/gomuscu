@@ -32,5 +32,13 @@
     <string name="creer_journee">Schedule a session</string>
     <string name="tv_editer_planning">Edit schedule</string>
     <string name="tv_historique_seances">Sessions history</string>
+    <string name="read_error">Can\'t read news</string>
+    <string name="connect_error">Can\'t connect to newsapi.org</string>
+
+    <!--    API    -->
+    <string name="baseUrl">http://newsapi.org/v2/top-headlines</string>
+    <string name="apiKey">fbf7cfdf0607426a9a7245c6d477ee38</string>
+    <string name="country">fr</string>
+    <string name="category">sports</string>
 
 </resources>

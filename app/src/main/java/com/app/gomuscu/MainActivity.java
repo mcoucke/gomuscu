@@ -3,22 +3,34 @@ package com.app.gomuscu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.app.gomuscu.entity.Exercice;
 import com.app.gomuscu.entity.ExerciceDansSeance;
 import com.app.gomuscu.entity.Historique;
 import com.app.gomuscu.entity.Journee;
+import com.app.gomuscu.entity.News;
 import com.app.gomuscu.entity.Seance;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private List<ImageView> listeImages = new ArrayList<>();
     private List<TextView> listeTextes = new ArrayList<>();
     private GoMuscuViewModel viewModel;
+    private NewsAdapter newsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        RecyclerView recyclerView = findViewById(R.id.rv_news);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        this.newsAdapter = new NewsAdapter(new ArrayList<News>(), this.viewModel);
+        recyclerView.setAdapter(this.newsAdapter);
+
+        URL url = createURL();
+        new GetNewsTask().execute(url);
     }
 
 
@@ -157,32 +178,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickImage(View view) {
-        System.out.println("click image planning");
-        switch (view.getId()) {
-            case R.id.img_day1 :
-                if (this.listeJournees.get(0) != null) {
-                    // todo
-                }
-                break;
-            case R.id.img_day2:
-                if (this.listeJournees.get(1) != null) {
-                    // todo
-                }
-                break;
-            case R.id.img_day3:
-                if (this.listeJournees.get(2) != null) {
-                    // todo
-                }
-                break;
-            case R.id.img_day4:
-                if (this.listeJournees.get(3) != null) {
-                    // todo
-                }
-                break;
-        }
-    }
-
     public void onClickEditPlanning(View view) {
         Intent intent = new Intent(this, EditerPlanning.class);
         startActivity(intent);
@@ -227,4 +222,122 @@ public class MainActivity extends AppCompatActivity {
         TextView tv_duree_moyenne = (TextView) findViewById(R.id.tv_duree_moyenne);
         tv_duree_moyenne.setText(duree_min_moy + "min");
     }
+
+    private URL createURL() {
+        String baseUrl = getString(R.string.baseUrl);
+        String apiKey = getString(R.string.apiKey);
+        String country = getString(R.string.country);
+        String category = getString(R.string.category);
+
+        try {
+            // Création
+            String urlString = baseUrl + "?"
+                    + "country=" + country
+                    + "&category=" + category
+                    + "&apiKey=" + apiKey;
+
+            return new URL(urlString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Récupération des données
+    private class GetNewsTask extends AsyncTask<URL, Void, JSONObject> {
+
+        @Override
+        protected JSONObject doInBackground(URL... urls) {
+            HttpURLConnection connection = null;
+
+            try {
+                connection = (HttpURLConnection) urls[0].openConnection();
+                int response = connection.getResponseCode();
+                if (response == HttpURLConnection.HTTP_OK) {
+                    StringBuilder builder = new StringBuilder();
+
+                    try (BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()))) {
+                        String line;
+
+                        while ((line = reader.readLine()) != null) {
+                            builder.append(line);
+                        }
+                    }
+                    catch (IOException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, R.string.read_error, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                    return new JSONObject(builder.toString());
+                }
+                else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this, R.string.connect_error, Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+            catch (Exception e) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, R.string.connect_error, Toast.LENGTH_LONG).show();
+                    }
+                });
+                e.printStackTrace();
+            }
+
+            finally {
+                connection.disconnect(); // fermeture de la connexion
+            }
+
+            return null;
+        }
+
+        // Traitement de la réponse
+        @Override
+        protected void onPostExecute(JSONObject jsonObject) {
+            // Traitement de la réponse
+            List<News> listeNews = getNewsFromJSON(jsonObject);
+            // Envoi des données au recyclerView
+            sendNewsToView(listeNews);
+        }
+    }
+
+    private List<News> getNewsFromJSON(JSONObject jsonObject) {
+        try {
+            List<News> listeNews = new ArrayList<>();
+
+            JSONArray articles = jsonObject.getJSONArray("articles");
+            String titre;
+            String url;
+
+            for(int i = 0; i < articles.length(); i++) {
+                JSONObject art = articles.getJSONObject(i);
+                titre = art.getString("title");
+                url = art.getString("url");
+
+                listeNews.add(new News(titre, url));
+            }
+            return listeNews;
+
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+    private void sendNewsToView(List<News> newsList) {
+        this.newsAdapter.setData(newsList);
+    }
+    
 }

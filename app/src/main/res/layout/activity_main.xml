@@ -132,8 +132,7 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:onClick="onClickImage" />
+            android:layout_gravity="center" />
 
         <ImageView
             android:id="@+id/img_day2"
@@ -143,8 +142,7 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:onClick="onClickImage" />
+            android:layout_gravity="center" />
 
         <ImageView
             android:id="@+id/img_day3"
@@ -154,8 +152,7 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:onClick="onClickImage" />
+            android:layout_gravity="center" />
 
         <ImageView
             android:id="@+id/img_day4"
@@ -165,8 +162,7 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:onClick="onClickImage" />
+            android:layout_gravity="center" />
 
 
     </GridLayout>
@@ -322,6 +318,22 @@
 
 
     </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rv_news" />
+
+    </LinearLayout>
 
 
 

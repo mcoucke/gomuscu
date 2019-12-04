@@ -67,9 +67,7 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Vi
 
         @Override
         public void onClick(View v) {
-            System.out.println("CLICK OUT");
             if(this.idHistorique != -1) {
-                System.out.println("CLICK IN");
                 Intent intent = new Intent(v.getContext(), BilanSeance.class);
                 intent.putExtra("id_historique", this.idHistorique);
                 v.getContext().startActivity(intent);
