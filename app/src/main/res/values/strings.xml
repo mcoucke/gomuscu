@@ -31,5 +31,6 @@
     <string name="seance_duree_repos">Durée repos</string>
     <string name="creer_journee">Planifier une séance</string>
     <string name="tv_editer_planning">Editer le planning</string>
+    <string name="tv_historique_seances">Historique des séances</string>
 
 </resources>

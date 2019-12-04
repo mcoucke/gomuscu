@@ -31,13 +31,13 @@ public class JourneeAdapter extends RecyclerView.Adapter<JourneeAdapter.ViewHold
     }
 
     @Override
-    public JourneeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View rowItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.editer_planning_row, parent, false);
         return new ViewHolder(rowItem);
     }
 
     @Override
-    public void onBindViewHolder(JourneeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         Seance seance = viewModel.getSeanceById(this.data.get(position).getIdSeance());
         holder.tv_journee_nom.setText(seance.getNom());
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");

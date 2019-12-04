@@ -194,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickViewHistorique(View view) {
-        System.out.println("click edit planning");
+        Intent intent = new Intent(this, HistoriqueSeances.class);
+        startActivity(intent);
     }
 
     public void onCLickDemarrerSeance(View view) {
